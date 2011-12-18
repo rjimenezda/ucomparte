@@ -1,0 +1,5 @@
+En esta carpeta estará el trabajo de miguel, podemos dejar aquí el script para crear la base de datos.
+También podemos tener scripts para rellenar la base de datos (por ejemplo asignaturas y demás) e incluso
+tener alguno que meta datos de prueba (usuarios, grupos, comentarios) mientras estemos desarrollando.
+También podemos meter aquí una carpeta si vamos a crear una pequeña librería para interactuar con la base de datos
+de la que haga uso la API y alguna de las páginas más básicas.
