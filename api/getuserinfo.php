@@ -4,7 +4,7 @@ session_start();
 
 include("../www/dataconection.php");
 
-$queEmp = "SELECT * FROM Reporte";
+$queEmp = "SELECT * FROM reporte";
 $resEmp = mysql_query($queEmp, $conexion) or die(mysql_error());
 $totEmp = mysql_num_rows($resEmp);
 
