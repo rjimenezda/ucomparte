@@ -23,15 +23,18 @@ function validate (event) {
 		$('.validate').each(function() {
 			this.style.background = "#FBFBFB";
 		})
+		$('#submit_reg').fadeIn();
 	} else {
 		console.log($('.validate')[0].value)
 		$('.validate').each(function() {
 			this.style.background = "#900";
-		})		
+		})
+		$('#submit_reg').fadeOut();
 	}
 }
 
 $(document).ready(function() {
+	$('#submit_reg').fadeOut();
 	$('.validate').each(function() {
 		$(this).keyup(validate)
 		return true	
@@ -56,7 +59,7 @@ $(document).ready(function() {
             <input type="text" name="surname" id="user_surname" class="input" value="" size="20" tabindex="10"></label>
         </p>
         <p>
-            <label>Carrera<br>
+            <label>País<br>
             <input type="text" name="degree" id="user_degree" class="input" value="" size="20" tabindex="10"></label>
         </p>   
         </div>
@@ -77,11 +80,22 @@ $(document).ready(function() {
             <label>Fecha de nacimiento<br>        
         	<input type="text" name="birthdate" id="user_birthdate" class="input" value="" size="20" tabindex="10" style="width:160px;"></label>
         </p>
+                <div style="float:left; width:100%;">
         </div>
-        <div style="float:left; width:100%;">                	
+        <p>
+            <label>Sexo<br>        
+        	<select name="sex" id="sex" class="input" tabindex="10" style="width:160px;">
+        		 <option value="H">H</option>
+        		 <option value="M">M</option>
+        		 <option value="?">?</option>
+        	</select>
+        	</label>
+        </p>
+        <div style="float:left; width:100%;">
+        </div>
         <p>
             <label>Dirección de correo<br>
-            <input type="text" name="log" id="user_login" class="input" value="" size="20" tabindex="10"></label>
+            <input type="text" name="log" id="user_login" class="input" value="" size="15" tabindex="10"></label>
         </p>
         <p>
             <label>Contraseña<br>
@@ -93,7 +107,7 @@ $(document).ready(function() {
         </p>
         <p class="forgetmenot"><a href="JavaScript:cancel_registration();"><input type="button" name="cancel" id="cancel" class="button-primary" value="Cancelar" tabindex="100"></a></p>
         <p class="submit">
-            <input type="submit" name="submit" id="submit" class="button-primary" value="Acceder" tabindex="100">
+            <input type="submit" name="submit" id="submit_reg" class="button-primary" value="Acceder" tabindex="100">
         </p>
         </div>
     </form>
