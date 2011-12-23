@@ -4,14 +4,14 @@ session_start();
 
 include("../www/dataconnection.php");
 
-if (!isset($_POST['usuario_id'])) {
+if (!isset($_POST['grupo_id'])) {
 	header('HTTP/1.1 500 Internal Server Error');
 	mysql_close($conexion);
 	die();
 }
 
 else {
-	$queEmp = "SELECT * FROM usuario WHERE usuario_id="."$_POST['usuario_id']";
+	$queEmp = "SELECT * FROM publicacion_grupo WHERE grupo_id="."$_POST['grupo_id']";
 	$resEmp = mysql_query($queEmp, $conexion) or die(mysql_error());
 	$totEmp = mysql_num_rows($resEmp);
 
