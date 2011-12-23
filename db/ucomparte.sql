@@ -333,7 +333,7 @@ ALTER TABLE `Usuario_recurso_apunte`
   ADD CONSTRAINT `Usuario_recurso_apunte_ibfk_2` FOREIGN KEY (`Recurso_id`) REFERENCES `recurso` (`Recurso_id`),
   ADD CONSTRAINT `Usuario_recurso_apunte_ibfk_1` FOREIGN KEY (`Usuario_id`) REFERENCES `usuario` (`Usuario_id`);
 
-INSERT INTO `Rsuario`
+INSERT INTO `Usuario`
 (`Usuario_id`, `Email`, `Password`, `Es_Administrador`, `Nombre`, `Apellidos`, `Pais`, `Localidad`, `Provincia`, `Sexo`, `Fecha_Nacimiento`, `Fecha_alta`) 
 VALUES 
 (NULL, 'i52cigam@uco.es', 'password', '0', 'Miguel Angel', 'Cid Garcia', 'España', 'Cordoba', 'Cordoba', 'H', '1986-12-02', '2011-12-23');
@@ -348,6 +348,115 @@ INSERT INTO `Usuario`
 VALUES 
 (NULL, 'i52jianr@uco.es', 'password', '1', 'Roman', 'Jimenez De Andres', 'España', 'Cordoba', 'Cordoba', 'H', '1987-06-02', '2011-12-23');
 
+INSERT INTO `Usuario`
+(`Usuario_id`, `Email`, `Password`, `Es_Administrador`, `Nombre`, `Apellidos`, `Pais`, `Localidad`, `Provincia`, `Sexo`, `Fecha_Nacimiento`, `Fecha_alta`) 
+VALUES 
+(NULL, 'i52besar@uco.es', 'password', '1', 'Rafael', 'Bernal Sanz', 'España', 'Cordoba', 'Cordoba', 'H', '1987-06-12', '2011-12-23');
+
+INSERT INTO `Usuario`
+(`Usuario_id`, `Email`, `Password`, `Es_Administrador`, `Nombre`, `Apellidos`, `Pais`, `Localidad`, `Provincia`, `Sexo`, `Fecha_Nacimiento`, `Fecha_alta`) 
+VALUES 
+(NULL, 'i52excaj@uco.es', 'password', '1', 'Jose David', 'Exposito Cañete', 'España', 'Cordoba', 'Cordoba', 'H', '1986-05-11', '2011-12-23');
+
+INSERT INTO `Titulacion` (`Titulacion_id`, `Nombre`) VALUES (NULL, 'Ingenieria Informatica');
+
+INSERT INTO `Titulacion` (`Titulacion_id`, `Nombre`) VALUES (NULL, 'Ingenieria Tecnica Informatica Sistemas');
+
+INSERT INTO `Asignatura` (`Asignatura_id`, `Titulacion_id`, `Nombre`) VALUES (NULL, '1', 'Proyectos');
+
+INSERT INTO `Asignatura` (`Asignatura_id`, `Titulacion_id`, `Nombre`) VALUES (NULL, '1', 'Redes');
+
+INSERT INTO `Asignatura` (`Asignatura_id`, `Titulacion_id`, `Nombre`) VALUES (NULL, '1', 'Bioinformatica');
+
+INSERT INTO `Asignatura` (`Asignatura_id`, `Titulacion_id`, `Nombre`) VALUES (NULL, '2', 'Matematica');
+
+INSERT INTO `Grupo` (`Grupo_id`, `Nombre`, `Descripcion`, `Fecha_alta`) VALUES (NULL, 'Primera Fila', ' ', '2011-12-23');
+
+INSERT INTO `Grupo` (`Grupo_id`, `Nombre`, `Descripcion`, `Fecha_alta`) VALUES (NULL, 'Segunda Fila', 'Grupo para hablar sobre sudaderas ', '2011-12-23');
+
+INSERT INTO `Grupo_usuario` (`Grupo_id`, `Usuario_id`) VALUES ('1', '1');
+
+INSERT INTO `Grupo_usuario` (`Grupo_id`, `Usuario_id`) VALUES ('1', '2');
+
+INSERT INTO `Grupo_usuario` (`Grupo_id`, `Usuario_id`) VALUES ('2', '3');
+
+INSERT INTO `Grupo_usuario` (`Grupo_id`, `Usuario_id`) VALUES ('1', '4');
+
+INSERT INTO `Grupo_usuario` (`Grupo_id`, `Usuario_id`) VALUES ('1', '5');
+
+INSERT INTO `Publicacion_grupo` 
+(`Publicacion_id`, `Grupo_id`, `Usuario_id`, `Titulo`, `Contenido`, `Fecha`)
+VALUES 
+(NULL, '1', '1', 'Cena de Navidad', '¿Donde y cuando quereis hacer la cena de Navidad?', '2011-12-23');
+
+INSERT INTO `Publicacion_grupo` 
+(`Publicacion_id`, `Grupo_id`, `Usuario_id`, `Titulo`, `Contenido`, `Fecha`)
+VALUES 
+(NULL, '2', '4', 'Nueva temporada de sudadertas', 'Ha empezado la nueva temporada de sudaderas y me gustaria que me dijeseis como me queda);
+
+INSERT INTO `Respuesta` 
+(`Respuesta_id`, `Usuario_id`, `Publicacion_id`, `Contenido`, `Fecha`) 
+VALUES 
+(NULL, '2', '1', 'Pues yo quiero el Moriles el dia 26', '2011-12-23');
+
+INSERT INTO `Respuesta` 
+(`Respuesta_id`, `Usuario_id`, `Publicacion_id`, `Contenido`, `Fecha`) 
+VALUES 
+(NULL, '3', '1', 'A mi me gustaria el Juramento que se come de lujo', '2011-12-23');
+
+INSERT INTO `Respuesta` 
+(`Respuesta_id`, `Usuario_id`, `Publicacion_id`, `Contenido`, `Fecha`)
+VALUES 
+(NULL, '5', '2', 'Pues te queda muy bien tio!', '2011-12-23');
+
+INSERT INTO `Recurso` 
+(`Recurso_id`, `Nombre`, `Descripcion`, `Fecha`, `Usuario_id`, `URL`, `Tamaño`, `Formato`)
+VALUES 
+(NULL, 'Practica 2', 'Memorias de la practica 2 de Bioinfo', '2011-12-23', '1', 'www.google.es', '2 MB', 'Pdf');
+
+INSERT INTO `Recurso` 
+(`Recurso_id`, `Nombre`, `Descripcion`, `Fecha`, `Usuario_id`, `URL`, `Tamaño`, `Formato`)
+VALUES 
+(NULL, 'Ejercicio', 'Ejercicio de IP de Redes', '2011-12-23', '2', 'www.redes.es', '64 KB', 'Txt');
+
+INSERT INTO `Recurso` 
+(`Recurso_id`, `Nombre`, `Descripcion`, `Fecha`, `Usuario_id`, `URL`, `Tamaño`, `Formato`)
+VALUES 
+(NULL, 'Plantilla Latex', 'Plantilla en Latex para cualquier asignatura', '2011-12-23', '5', 'www.latex.es', '10 KB', 'Ltx');
+
+INSERT INTO `Recurso_asignatura` (`Asignatura_id`, `Recurso_id`) VALUES ('3', '1');
+
+INSERT INTO `Recurso_asignatura` (`Asignatura_id`, `Recurso_id`) VALUES ('2', '2');
+
+INSERT INTO `Recurso_asignatura` (`Asignatura_id`, `Recurso_id`) VALUES ('1', '3');
+
+INSERT INTO `Usuario_recurso_apunte` (`Usuario_id`, `Recurso_id`) VALUES ('1', '1');
+
+INSERT INTO `Usuario_recurso_apunte` (`Usuario_id`, `Recurso_id`) VALUES ('2', '1');
+
+INSERT INTO `Usuario_recurso_apunte` (`Usuario_id`, `Recurso_id`) VALUES ('3', '1');
+
+INSERT INTO `Usuario_recurso_apunte` (`Usuario_id`, `Recurso_id`) VALUES ('1', '1');
+
+INSERT INTO `Usuario_recurso_apunte` (`Usuario_id`, `Recurso_id`) VALUES ('4', '1');
+
+INSERT INTO `Usuario_recurso_apunte` (`Usuario_id`, `Recurso_id`) VALUES ('4', '2');
+
+INSERT INTO `Usuario_recurso_apunte` (`Usuario_id`, `Recurso_id`) VALUES ('5', '3');
+
+INSERT INTO `Usuario_recurso_apunte` (`Usuario_id`, `Recurso_id`) VALUES ('1', '3');
+
+INSERT INTO `Comentario_recurso` 
+(`Comentario_id`, `Recurso_id`, `Usuario_id`, `Contenido`, `Fecha`)
+VALUES 
+(NULL, '1', '2', 'La verdad que estas practicas estan muy bien', '2011-12-23');
+
+INSERT INTO `Comentario_recurso` 
+(`Comentario_id`, `Recurso_id`, `Usuario_id`, `Contenido`, `Fecha`)
+VALUES 
+(NULL, '2', '1', 'El ejercicio esta bien resuelto', '2011-12-23');
+
+INSERT INTO `Reporte` (`Reporte_id`, `Contenido`) VALUES (NULL, 'El recurso 1 esta mal');
 
 
 
