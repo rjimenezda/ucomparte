@@ -332,3 +332,22 @@ ALTER TABLE `respuesta`
 ALTER TABLE `usuario_recurso_apunte`
   ADD CONSTRAINT `usuario_recurso_apunte_ibfk_2` FOREIGN KEY (`Recurso_id`) REFERENCES `recurso` (`recurso_id`),
   ADD CONSTRAINT `usuario_recurso_apunte_ibfk_1` FOREIGN KEY (`Usuario_id`) REFERENCES `usuario` (`Usuario_id`);
+
+INSERT INTO `usuario`
+(`Usuario_id`, `Email`, `Password`, `Es_Administrador`, `Nombre`, `Apellidos`, `Pais`, `Localidad`, `Provincia`, `Sexo`, `Fecha_Nacimiento`, `Fecha_alta`) 
+VALUES 
+(NULL, 'i52cigam@uco.es', 'password', '0', 'Miguel Angel', 'Cid Garcia', 'España', 'Cordoba', 'Cordoba', 'H', '1986-12-02', '2011-12-23');
+
+INSERT INTO `usuario`
+(`Usuario_id`, `Email`, `Password`, `Es_Administrador`, `Nombre`, `Apellidos`, `Pais`, `Localidad`, `Provincia`, `Sexo`, `Fecha_Nacimiento`, `Fecha_alta`) 
+VALUES 
+(NULL, 'i52gagac@uco.es', 'password', '1', 'Carlos', 'Garcia Garcia', 'España', 'Cordoba', 'Cordoba', 'H', '1987-06-17', '2011-12-23');
+
+INSERT INTO `usuario`
+(`Usuario_id`, `Email`, `Password`, `Es_Administrador`, `Nombre`, `Apellidos`, `Pais`, `Localidad`, `Provincia`, `Sexo`, `Fecha_Nacimiento`, `Fecha_alta`) 
+VALUES 
+(NULL, 'i52jianr@uco.es', 'password', '1', 'Roman', 'Jimenez De Andres', 'España', 'Cordoba', 'Cordoba', 'H', '1987-06-02', '2011-12-23');
+
+
+
+
