@@ -36,8 +36,12 @@ function bind_events() {
 	
 	$("#getusergroups_btn").click(function (){
 		console.log("Sacando grupos de usuario")
-		$("#getusergroups_txt")[0].value = "TBI"
 		$.post("api/getusergroups.php", { usuario_id : 1 }, function(data) { $("#getusergroups_txt")[0].value = data } )
+	})
+	
+	$("#getusergrouplist_btn").click(function (){
+		console.log("Sacando lista grupos de usuario (con nombre e id)")
+		$.post("api/getusergrouplist.php", { usuario_id : 1 }, function(data) { $("#getusergrouplist_txt")[0].value = data } )
 	})
 	
 	$("#getmeloapuntos_btn").click(function (){
@@ -71,6 +75,9 @@ $(document).ready(bind_events)
 
 <input type="button" value="getusergroups" id="getusergroups_btn"/><br />
 <textarea id="getusergroups_txt" ></textarea><br />
+
+<input type="button" value="getusergrouplist" id="getusergrouplist_btn"/><br />
+<textarea id="getusergrouplist_txt" ></textarea><br />
 
 <input type="button" value="getmeloapuntos" id="getmeloapuntos_btn"/><br />
 <textarea id="getmeloapuntos_txt" ></textarea><br />
