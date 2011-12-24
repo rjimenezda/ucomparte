@@ -165,7 +165,8 @@ form p{
 	position:absolute;
 	margin-left: -320px;
 	margin-top: -220px;
-	visibility:hidden;
+/* 	visibility:hidden; */
+	display: none;
 	z-index: 3;
 	background-color:#fff;
 	filter:alpha(opacity=90);

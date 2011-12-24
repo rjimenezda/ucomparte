@@ -10,11 +10,13 @@
 <script type="text/javascript" src="js/jquery-1.7.1.min.js"></script>
 <script language="javascript" type="text/javascript">
 function show_registration(){
-	document.getElementById('register').style.visibility="visible";
+// 	document.getElementById('register').style.visibility="visible";
+	$("#register").fadeIn("slow");
 }
 
 function cancel_registration(){
-	document.getElementById('register').style.visibility="hidden";
+// 	document.getElementById('register').style.visibility="hidden";
+	$("#register").fadeOut("slow");
 }
 
 function validate (event) {
@@ -39,6 +41,20 @@ $(document).ready(function() {
 		$(this).keyup(validate)
 		return true	
 	})
+	
+	// Para ocultar el formulario al hacer click fuera
+	var mouse_is_inside = false;
+
+	    $('#register').hover(function(){ 
+	        mouse_is_inside=true; 
+	    }, function(){ 
+	        mouse_is_inside=false; 
+	    });
+
+	    $("html").mouseup(function(){ 
+	        if(!mouse_is_inside) cancel_registration();
+	    });
+	
 })
 
 </script>
