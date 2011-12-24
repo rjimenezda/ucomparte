@@ -2,7 +2,7 @@
 
 session_start();
 
-include("../www/dataconnection.php");
+include("../dataconnection.php");
 
 if (!isset($_POST['recurso_id'])) {
 	header('HTTP/1.1 500 Internal Server Error');

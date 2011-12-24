@@ -2,7 +2,7 @@
 
 session_start();
 
-include("../www/dataconnection.php");
+include("../dataconnection.php");
 
 if (!isset($_POST['grupo_id']) or !isset($_POST['usuario_id']) or !isset($_POST['titulo']) or !isset($_POST['contenido'])) {
 	header('HTTP/1.1 500 Internal Server Error');
