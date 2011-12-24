@@ -11,7 +11,7 @@ if (!isset($_POST['recurso_id'])) {
 }
 
 else {
-	$queEmp = "SELECT * FROM recurso WHERE recurso_id="."$_POST['recurso_id']";
+	$queEmp = "SELECT * FROM recurso WHERE recurso_id=".$_POST['recurso_id'];
 	$resEmp = mysql_query($queEmp, $conexion) or die(mysql_error());
 	$totEmp = mysql_num_rows($resEmp);
 

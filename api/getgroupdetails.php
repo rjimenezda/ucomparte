@@ -11,7 +11,7 @@ if (!isset($_POST['grupo_id'])) {
 }
 
 else {
-	$queEmp = "SELECT * FROM grupo WHERE grupo_id="."$_POST['grupo_id']";
+	$queEmp = "SELECT * FROM grupo WHERE grupo_id=".$_POST['grupo_id'];
 	$resEmp = mysql_query($queEmp, $conexion) or die(mysql_error());
 	$totEmp = mysql_num_rows($resEmp);
 

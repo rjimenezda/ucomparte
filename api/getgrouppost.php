@@ -11,7 +11,7 @@ if (!isset($_POST['publicacion_id'])) {
 }
 
 else {
-	$queEmp = "SELECT * FROM respuesta WHERE publicacion_id="."$_POST['publicacion_id']";
+	$queEmp = "SELECT * FROM respuesta WHERE publicacion_id=".$_POST['publicacion_id'];
 	$resEmp = mysql_query($queEmp, $conexion) or die(mysql_error());
 	$totEmp = mysql_num_rows($resEmp);
 
