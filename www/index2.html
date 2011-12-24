@@ -36,7 +36,8 @@ function validate (event) {
 }
 
 $(document).ready(function() {
-	$('#submit_reg').fadeOut();
+	$('#submit_reg').hide();
+	
 	$('.validate').each(function() {
 		$(this).keyup(validate)
 		return true	
