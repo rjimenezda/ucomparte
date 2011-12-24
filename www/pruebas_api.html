@@ -11,39 +11,39 @@ function bind_events() {
 	
 	$("#getuserinfo_btn").click(function (){
 		console.log("Sacando info de usuario")
-		$.post("../api/getuserinfo.php", { usuario_id : 1 }, function(data) { $("#getuserinfo_txt")[0].value = data } )
+		$.post("api/getuserinfo.php", { usuario_id : 1 }, function(data) { $("#getuserinfo_txt")[0].value = data } )
 	})
 	
 	$("#getresource_btn").click(function (){
 		console.log("Sacando info de recurso")
-		$.post("../api/getresource.php", { recurso_id : 1 }, function(data) { $("#getresource_txt")[0].value = data } )
+		$.post("api/getresource.php", { recurso_id : 1 }, function(data) { $("#getresource_txt")[0].value = data } )
 	})
 	
 	$("#getgroupdetails_btn").click(function (){
 		console.log("Sacando info de grupo")
-		$.post("../api/getgroupdetails.php", { grupo_id : 1 }, function(data) { $("#getgroupdetails_txt")[0].value = data } )
+		$.post("api/getgroupdetails.php", { grupo_id : 1 }, function(data) { $("#getgroupdetails_txt")[0].value = data } )
 	})
 	
 	$("#getgrouppost_btn").click(function (){
 		console.log("Sacando post de grupo")
-		$.post("../api/getgrouppost.php", { publicacion_id : 1 }, function(data) { $("#getgrouppost_txt")[0].value = data } )
+		$.post("api/getgrouppost.php", { publicacion_id : 1 }, function(data) { $("#getgrouppost_txt")[0].value = data } )
 	})
 	
 	$("#getgroupposts_btn").click(function (){
 		console.log("Sacando posts de grupo")
-		$.post("../api/getgroupposts.php", { grupo_id : 1 }, function(data) { $("#getgroupposts_txt")[0].value = data } )
+		$.post("api/getgroupposts.php", { grupo_id : 1 }, function(data) { $("#getgroupposts_txt")[0].value = data } )
 	})
 	
 	$("#getusergroups_btn").click(function (){
 		console.log("Sacando grupos de usuario")
 		$("#getusergroups_txt")[0].value = "TBI"
-		$.post("../api/getusergroups.php", { usuario_id : 1 }, function(data) { $("#getusergroups_txt")[0].value = data } )
+		$.post("api/getusergroups.php", { usuario_id : 1 }, function(data) { $("#getusergroups_txt")[0].value = data } )
 	})
 	
 	$("#getusergroups_btn").click(function (){
 		console.log("Sacando grupos de usuario -- no está hecho")
 		$("#getusergroups_txt")[0].value = "TBI"
-		$.post("../api/getusergroups.php", { usuario_id : 1 }, function(data) { $("#getusergroups_txt")[0].value = data } )
+		$.post("api/getusergroups.php", { usuario_id : 1 }, function(data) { $("#getusergroups_txt")[0].value = data } )
 	})
 	
 }
