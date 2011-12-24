@@ -15,7 +15,6 @@ else {
 	$resEmp = mysql_query($queEmp, $conexion) or die(mysql_error());
 	$totEmp = mysql_num_rows($resEmp);
 
-
 	if ($totEmp> 0) {
 	   while ($rowEmp = mysql_fetch_assoc($resEmp)) {
 			// Imprimimos los resultados en JSON
