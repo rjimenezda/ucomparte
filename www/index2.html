@@ -43,19 +43,6 @@ $(document).ready(function() {
 		return true	
 	})
 	
-	// Para ocultar el formulario al hacer click fuera
-	var mouse_is_inside = false;
-
-	    $('#register').hover(function(){ 
-	        mouse_is_inside=true; 
-	    }, function(){ 
-	        mouse_is_inside=false; 
-	    });
-
-	    $("html").mouseup(function(){ 
-	        if(!mouse_is_inside) cancel_registration();
-	    });
-	
 })
 
 </script>
