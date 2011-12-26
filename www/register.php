@@ -1,11 +1,12 @@
 <?php
 
+session_start();
+
 include('../www/dataconnection.php');
 
 error_reporting(E_ALL);
 ini_set('display_errors', '1');
 
-session_start();
 $query = "";
 
 if ($_POST['name'] === '' or  

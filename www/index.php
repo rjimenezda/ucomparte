@@ -1,3 +1,7 @@
+<?php
+	session_start();
+?>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml" dir="ltr" lang="es-ES">
@@ -9,6 +13,7 @@
 <link rel="stylesheet" id="login-css" href="login.css" type="text/css" media="all">
 <script type="text/javascript" src="js/jquery-1.7.1.min.js"></script>
 <script language="javascript" type="text/javascript">
+
 function show_registration(){
 // 	document.getElementById('register').style.visibility="visible";
 	$("#register").fadeIn("slow");
@@ -121,15 +126,21 @@ $(document).ready(function() {
     
     		<!--<img src="images/login-header.png" />-->
 			<form name="loginform" id="loginform" class="loginform" action="login.php" method="post">
-          
+			
 			<p>
 				<label>Dirección de correo<br>
 				<input type="text" name="log" id="user_login" class="input" value="" size="20" tabindex="10"></label>
 			</p>
+			
 			<p>
 				<label>Contraseña<br>
 				<input type="password" name="pwd" id="user_pass" class="input" value="" size="20" tabindex="20"></label>
 			</p>
+			
+			<? if(isset($_GET['err']) && $_GET['err']=='1'){ ?>
+			<p style="color:red;">Usuario o contraseña no v&aacute;lidos</p><br />			
+			<? } ?>
+			
 			<p class="forgetmenot"><label><input name="rememberme" type="checkbox" id="rememberme" value="forever" tabindex="90"> Recuérdame</label></p>
 			<p class="submit">
 				<input type="submit" name="submit" id="submit" class="button-primary" value="Acceder" tabindex="100">
@@ -141,7 +152,7 @@ $(document).ready(function() {
 </div>
 
 <div id="footer">
-	<center><font style="color:#999;">©2011 UCOmparte - <a href="JavaScript:show_registration();">Registrate</a></font></center>
+	<center><font style="color:#999;">©2011 UCOmparte - <a href="JavaScript:show_registration();">Regístrate</a></font></center>
 </div>
 
 

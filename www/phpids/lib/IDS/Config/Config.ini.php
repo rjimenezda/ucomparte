@@ -10,7 +10,7 @@
     ; basic settings - customize to make the PHPIDS work at all
     filter_type     = xml
     
-    base_path       = /home/ciyi/ucomparte/phpids/lib/IDS/ 
+    base_path       = /home/ciyi/ucomparte/www/phpids/lib/IDS/ 
     use_base_path   = false
     
     filter_path     = default_filter.xml

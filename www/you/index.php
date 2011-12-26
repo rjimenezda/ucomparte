@@ -5,7 +5,18 @@
 <link rel="shortcut icon" href="images/favicon.ico"/>
 <title>UCOmparte</title>
 <link rel=stylesheet type=text/css href="styles.css">
+<link rel="stylesheet" href="../css/smoothness/jquery-ui-1.8.16.custom.css" type="text/css" media="all">
+<script type="text/javascript" src="../js/jquery-1.7.1.min.js"></script>
+<script type="text/javascript" src="../js/jquery-ui-1.8.16.min.js"></script>
 <script language="javascript" type="text/javascript">
+
+//Progressbar de me-apago
+$(function() {
+	$( "#prgs_meapago" ).progressbar({
+		value: 50
+	});
+});
+
 function show_new_group(){
 	document.getElementById('new_group').style.visibility="visible";
 }
@@ -152,5 +163,13 @@ function cancel_new_group(){
     </div>
     <!-- end .footer --></div>
   <!-- end .container --></div>
+  
+  <div class="meapago">
+	<p>Haz lo que tengas que hacer, que me apago</p> 
+	<div id="prgs_meapago"></div>
+  </div>
+  
 </body>
+
+
 </html>
