@@ -309,4 +309,17 @@ ul.nav a:hover, ul.nav a:active, ul.nav a:focus { /* esto cambia el color de fon
 	font-size: 1px;
 	line-height: 0px;
 }
+.meapago {
+	width:400px;
+	height:200px;
+	background-color: gray;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin-left: -200px;
+	margin-top: -100px;
+}
+#prgs_meapago{
+	margin: 50px;
+}
 -->
