@@ -20,7 +20,7 @@
 set_include_path(
     get_include_path()
     . PATH_SEPARATOR
-    . '../phpids/lib/'
+    . '/phpids/lib/'
 );
 
 if (!session_id()) {
@@ -45,7 +45,7 @@ try {
         'COOKIE' => $_COOKIE
     );
 
-    $init = IDS_Init::init(dirname(__FILE__) . '/../phpids/lib/IDS/Config/Config.ini.php');
+    $init = IDS_Init::init(dirname(__FILE__) . '/phpids/lib/IDS/Config/Config.ini.php');
 
     /**
      * You can also reset the whole configuration
@@ -60,7 +60,7 @@ try {
      * or you can access the config directly like here:
      */
     
-    $init->config['General']['base_path'] = dirname(__FILE__) . '/../phpids/lib/IDS/';
+    $init->config['General']['base_path'] = dirname(__FILE__) . '/phpids/lib/IDS/';
     $init->config['General']['use_base_path'] = true;
     $init->config['Caching']['caching'] = 'none';
 
