@@ -3,16 +3,16 @@
 session_start();
 
 include("../dataconnection.php");
-include ("../funciones.php");
 
-if (!isset($_POST['grupo_id']) or !isset($_POST['usuario_id'])) {
-	terminate(true);
+if (!isset($_POST['grupo_id']) or !isset($_POST['nombre']) or !isset($_POST['descripcion'])) {
+	header('HTTP/1.1 500 Internal Server Error');
+	mysql_close($conexion);
+	die();
 }
 
-
 else {
-	$queEmp = "INSERT INTO grupo_usuario VALUES(".$_POST['grupo_id'].", ".$_POST['usuario_id'].")";
-	$resEmp = mysql_query($queEmp, $conexion) or terminate(true);
+	$queEmp = "INSERT INTO grupo VALUES(NULL, '".$_POST['nombre']."', '".$_POST['descripcion']."', NOW())";
+	$resEmp = mysql_query($queEmp, $conexion) or die(mysql_error());
 //	$totEmp = mysql_num_rows($resEmp);
 
 
@@ -28,5 +28,5 @@ else {
 	echo 'OK';
 }
 
-terminate();
+mysql_close($conexion);
 ?>
