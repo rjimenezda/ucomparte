@@ -1,7 +1,7 @@
 <?php
 
 // Sin esto los usuarios podrían acceder a esta pantalla y liarnos un buen memory leak xD
-if (!isset($_SESSION)) {
+if (!isset($_SESSION['usuario_id'])) {
 	die();
 }
 
