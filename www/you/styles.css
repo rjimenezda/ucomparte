@@ -1,0 +1,312 @@
+@charset "utf-8";
+/* CSS Document */
+
+<!--
+body {
+	font: 100%/1.4 Helvetica, sans-serif;
+	margin: 0;
+	padding: 0;
+	color: #000;
+	font-size:14px;
+}
+
+/* ~~ Selectores de elemento/etiqueta ~~ */
+ul, ol, dl { /* Debido a las diferencias existentes entre los navegadores, es recomendable no añadir relleno ni márgenes en las listas. Para lograr coherencia, puede especificar las cantidades deseadas aquí o en los elementos de lista (LI, DT, DD) que contienen. Recuerde que lo que haga aquí se aplicará en cascada en la lista .nav, a no ser que escriba un selector más específico. */
+	padding: 0;
+	margin: 0;
+}
+h1, h2, h3, h4, h5, h6, p {
+	margin-top: 0;	 /* la eliminación del margen superior resuelve un problema que origina que los márgenes escapen de la etiqueta div contenedora. El margen inferior restante lo mantendrá separado de los elementos de que le sigan. */
+	padding-right: 15px;
+	padding-left: 15px; /* la adición de relleno a los lados del elemento dentro de las divs, en lugar de en las divs propiamente dichas, elimina todas las matemáticas de modelo de cuadro. Una div anidada con relleno lateral también puede usarse como método alternativo. */
+}
+a img { /* este selector elimina el borde azul predeterminado que se muestra en algunos navegadores alrededor de una imagen cuando está rodeada por un vínculo */
+	border: none;
+}
+
+/* ~~ La aplicación de estilo a los vínculos del sitio debe permanecer en este orden (incluido el grupo de selectores que crea el efecto hover -paso por encima-). ~~ */
+a:link {
+	color: #42413C;
+	text-decoration: none; /* a no ser que aplique estilos a los vínculos para que tengan un aspecto muy exclusivo, es recomendable proporcionar subrayados para facilitar una identificación visual rápida */
+}
+a:visited {
+	color: #6E6C64;
+	text-decoration: none;
+}
+a:hover, a:active, a:focus { /* este grupo de selectores proporcionará a un usuario que navegue mediante el teclado la misma experiencia de hover (paso por encima) que experimenta un usuario que emplea un ratón. */
+	text-decoration: underline;
+}
+
+/* ~~ Este contenedor de anchura fija rodea a todas las demás divs ~~ */
+.container {
+
+	background: #FFFFFF;
+	margin: 0 auto; /* el valor automático de los lados, unido a la anchura, centra el diseño */
+}
+
+/* ~~ No se asigna una anchura al encabezado. Se extenderá por toda la anchura del diseño. Contiene un marcador de posición de imagen que debe sustituirse por su propio logotipo vinculado. ~~ */
+.header {
+	background: #f1f1f1;
+	height:60px;
+	border-bottom:1px solid #999;
+}
+
+.header_content{
+	width: 960px;
+	margin: 0 auto;
+}
+.header_left {
+	float: left;
+	width: 180px;
+	padding-top: 6px;
+}
+.header_center {
+	width: 600px;
+	float: left;
+}
+.header_right {
+	float: left;
+	width: 180px;
+	padding-top: 22px;
+	font-size:12px
+}
+
+.menu_icons{
+	float:left; 
+	margin-top:6px; 
+	margin-left:15px; 
+	width:200px;	
+}
+
+.search{
+	float:left; 
+	margin-top:18px; 
+	margin-left:15px;
+	width:370px;	
+}
+.center{
+	width: 960px;
+	margin: 0 auto;
+}
+.sidebar1 {
+	float: left;
+	width: 180px;
+	padding-bottom: 10px;
+}
+.content {
+	width: 600px;
+	float: left;
+	border-left:1px solid #999;
+	border-right:1px solid #999;
+}
+.sidebar2 {
+	float: left;
+	width: 178px;
+	padding: 10px 0;
+}
+
+.user_photo{
+	width: 180px;
+	height:50px;
+	margin-top:10px;
+}
+
+.user_name{
+	float:left;
+	padding-top:16px;
+	padding-left:5px;
+}
+
+.user_group{
+	width:165px;
+	float:left;
+	margin-top:25px;
+}
+
+.blackboard{
+	float:left; 
+	width: 600px; 
+	margin-top:10px;
+	border-bottom:1px solid #999; 
+	padding-bottom:10px;
+}
+
+.publication{
+	float:left; 
+	width: 600px; 
+	margin-top:10px;
+	border-bottom:1px solid #999; 
+	padding-bottom:10px;	
+}
+
+.details_publication{
+	float:left; 
+	margin-left:20px;
+	width:500px;
+}
+
+.button-primary{
+	font-family:"Lucida Grande",Verdana,Arial,"Bitstream Vera Sans",sans-serif;
+	padding:3px 10px;
+	border:none;
+	font-size:12px;
+	color: #fff;
+	border-width:1px;
+	border-style:solid;
+	-moz-border-radius:3px;
+	-khtml-border-radius:3px;
+	-webkit-border-radius:3px;
+	border-radius:3px;
+	cursor:pointer;
+	text-decoration:none;
+	margin-top:-3px;
+	background-color: #900;
+}
+
+.yt-uix-button{
+	height:2.0833em;
+	border:1px solid #ccc;
+	color:#000;
+	background:#f6f6f6;
+	background-image:-moz-linear-gradient(top,#ffffff,#efefef);
+	background-image:-webkit-gradient(linear,left top,left bottom,from(#ffffff),to(#efefef));
+	filter:progid:DXImageTransform.Microsoft.Gradient(startColorStr=#ffffff,endColorStr=#efefef);
+	-moz-border-radius:3px;
+	-webkit-border-radius:3px;
+	border-radius:3px;
+	white-space:nowrap;
+	vertical-align:middle;
+	cursor:pointer;
+	overflow:visible;
+}
+
+.yt-uix-button-content {
+display: block;
+border: none;
+padding: 0;
+background: no-repeat url(images/search_icon.png);
+width: 14px;
+height: 14px;
+opacity: .6;
+text-indent: -10000px;
+-moz-box-shadow: none;
+-ms-box-shadow: none;
+-o-box-shadow: none;
+-webkit-box-shadow: none;
+box-shadow: none;
+}
+
+.yt-uix-button-content2 {
+display: block;
+border: none;
+padding: 0;
+background: no-repeat url(images/add_publication_icon.png);
+width: 14px;
+height: 14px;
+opacity: .6;
+text-indent: -10000px;
+-moz-box-shadow: none;
+-ms-box-shadow: none;
+-o-box-shadow: none;
+-webkit-box-shadow: none;
+box-shadow: none;
+}
+
+.yt-uix-button:hover,.yt-uix-button:focus,.yt-uix-button-hover{border-color:#999;background:#f3f3f3;background-image:-moz-linear-gradient(top,#ffffff,#ebebeb);background-image:-webkit-gradient(linear,left top,left bottom,from(#ffffff),to(#ebebeb));filter:progid:DXImageTransform.Microsoft.Gradient(startColorStr=#ffffff,endColorStr=#ebebeb);outline:0;-moz-box-shadow:0 0 3px #999;-webkit-box-shadow:0 0 3px #999;box-shadow:0 0 3px #999}.yt-uix-button:active,.yt-uix-button-active,.yt-uix-button-active:hover,.yt-uix-button-active:focus{border-color:#999;background:#ddd;background-image:-moz-linear-gradient(top,#cccccc,#ffffff);background-image:-webkit-gradient(linear,left top,left bottom,from(#cccccc),to(#ffffff));filter:progid:DXImageTransform.Microsoft.Gradient(startColorStr=#cccccc,endColorStr=#ffffff)}
+
+.masthead-search{
+	height:23px;
+	white-space:nowrap;
+	vertical-align:middle;
+	margin-right:-7px;
+	border:1px solid #ccc;
+	-moz-border-radius:3px;
+	-webkit-border-radius:3px;
+	border-radius:3px;
+}
+
+.new_group{
+	width:640px;
+	height:440px;
+	top: 50%;
+	left: 50%;
+	position:absolute;
+	margin-left: -320px;
+	margin-top: -220px;
+	visibility:hidden;
+	z-index: 3;
+	background-color:#fff;
+	filter:alpha(opacity=90);
+	opacity:0.9;
+}
+
+.new_groupform{
+	height:100%;
+	padding:16px 16px 40px 16px;
+	font-weight:normal;
+	-moz-border-radius:11px;
+	-khtml-border-radius:11px;
+	-webkit-border-radius:11px;
+	border-radius:11px;
+	background: #fff;
+	border:1px solid #e5e5e5;
+	-moz-box-shadow:rgba(200,200,200,1) 0 4px 18px;
+	-webkit-box-shadow:rgba(200,200,200,1) 0 4px 18px;
+	-khtml-box-shadow:rgba(200,200,200,1) 0 4px 18px;
+	box-shadow:rgba(200,200,200,1) 0 4px 18px;
+		
+}
+
+.new_groupform p{
+	margin-bottom:5px;	
+}
+
+/* ~~ Este selector agrupado da espacio a las listas del área de .content ~~ */
+.content ul, .content ol { 
+	padding: 0 15px 15px 40px; /* este relleno reproduce en espejo el relleno derecho de la regla de encabezados y de párrafo incluida más arriba. El relleno se ha colocado en la parte inferior para que el espacio existente entre otros elementos de la lista y a la izquierda cree la sangría. Estos pueden ajustarse como se desee. */
+}
+
+/* ~~ Los estilos de lista de navegación (pueden eliminarse si opta por usar un menú desplegable predefinido como el de Spry) ~~ */
+ul.nav {
+	list-style: none; /* esto elimina el marcador de lista */
+	border-top: 1px solid #666; /* esto crea el borde superior de los vínculos (los demás se sitúan usando un borde inferior en el LI) */
+	margin-bottom: 15px; /* esto crea el espacio entre la navegación en el contenido situado debajo */
+}
+ul.nav li {
+	border-bottom: 1px solid #666; /* esto crea la separación de los botones */
+}
+ul.nav a, ul.nav a:visited { /* al agrupar estos selectores, se asegurará de que los vínculos mantengan el aspecto de botón incluso después de haber sido visitados */
+	padding: 5px 5px 5px 15px;
+	display: block; /* esto da al anclaje propiedades de bloque, de manera que llene todo el LI en el que está contenido para que toda el área reaccione a un clic de ratón. */
+	width: 160px;  /*esta anchura hace que se pueda hacer clic en todo el botón para IE6. Puede eliminarse si no es necesario proporcionar compatibilidad con IE6. Calcule la anchura adecuada restando el relleno de este vínculo de la anchura del contenedor de barra lateral. */
+	text-decoration: none;
+	background: #C6D580;
+}
+ul.nav a:hover, ul.nav a:active, ul.nav a:focus { /* esto cambia el color de fondo y del texto tanto para usuarios que naveguen con ratón como para los que lo hagan con teclado */
+	background: #ADB96E;
+	color: #FFF;
+}
+
+/* ~~ Los estilos de pie de página ~~ */
+.footer {
+	width:100%;
+	padding: 10px 0;
+	clear: both; /* esta propiedad de borrado fuerza a .container a conocer dónde terminan las columnas y a contenerlas */
+}
+
+/* ~~ Clases float/clear varias ~~ */
+.fltrt {  /* esta clase puede utilizarse para que un elemento flote en la parte derecha de la página. El elemento flotante debe preceder al elemento junto al que debe aparecer en la página. */
+	float: right;
+	margin-left: 8px;
+}
+.fltlft { /* esta clase puede utilizarse para que un elemento flote en la parte izquierda de la página. El elemento flotante debe preceder al elemento junto al que debe aparecer en la página. */
+	float: left;
+	margin-right: 8px;
+}
+.clearfloat { /* esta clase puede situarse en una <br /> o div vacía como elemento final tras la última div flotante (dentro de .container) si .footer se elimina o se saca fuera de .container */
+	clear:both;
+	height:0;
+	font-size: 1px;
+	line-height: 0px;
+}
+-->
