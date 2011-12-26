@@ -147,7 +147,7 @@ $(document).ready(function() {
 </div>
 
 <div id="footer">
-	<center><font style="color:#999;">©2011 UCOmparte - <a href="JavaScript:show_registration();">Registrate</a></font></center>
+	<center><font style="color:#999;">©2011 UCOmparte - <a href="JavaScript:show_registration();">Regístrate</a></font></center>
 </div>
 
 
