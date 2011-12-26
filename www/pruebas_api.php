@@ -56,6 +56,11 @@ function bind_events() {
 		$.post("api/getsubjectresources.php", { asignatura_id : 1 }, function(data) { $("#getsubjecteresources_txt")[0].value = data } )
 	})
 	
+	$("#getresourcecomments_btn").click(function (){
+		console.log("Sacando comentarios de recursos")
+		$.post("api/getresourcecomments.php", { recurso_id : 1 }, function(data) { $("#getresourcecomments_txt")[0].value = data } )
+	})
+	
 	$("#getdegrees_btn").click(function (){
 		console.log("Sacando titulaciones")
 		$.post("api/getdegrees.php", function(data) { $("#getdegrees_txt")[0].value = data } )
@@ -118,6 +123,9 @@ $(document).ready(bind_events)
 
 <input type="button" value="getsubjecteresources" id="getsubjecteresources_btn"/><br />
 <textarea id="getsubjecteresources_txt" ></textarea><br />
+
+<input type="button" value="getresourcecomments" id="getresourcecomments_btn"/><br />
+<textarea id="getresourcecomments_txt" ></textarea><br />
 
 <input type="button" value="getdegrees" id="getdegrees_btn"/><br />
 <textarea id="getdegrees_txt" ></textarea><br />
