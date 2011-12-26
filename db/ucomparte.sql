@@ -138,7 +138,7 @@ CREATE TABLE IF NOT EXISTS `recurso` (
   `Fecha` date NOT NULL,
   `usuario_id` int(7) NOT NULL,
   `URL` varchar(200) NOT NULL,
-  `Tamaño` varchar(10) NOT NULL,
+  `Tamano` varchar(10) NOT NULL,
   `Formato` varchar(3) NOT NULL,
   PRIMARY KEY (`recurso_id`),
   KEY `usuario_id` (`usuario_id`)
@@ -410,17 +410,17 @@ VALUES
 (NULL, '5', '2', 'Pues te queda muy bien tio!', '2011-12-23');
 
 INSERT INTO `recurso` 
-(`recurso_id`, `Nombre`, `Descripcion`, `Fecha`, `usuario_id`, `URL`, `Tamaño`, `Formato`)
+(`recurso_id`, `Nombre`, `Descripcion`, `Fecha`, `usuario_id`, `URL`, `Tamano`, `Formato`)
 VALUES 
 (NULL, 'Practica 2', 'Memorias de la practica 2 de Bioinfo', '2011-12-23', '1', 'www.google.es', '2 MB', 'Pdf');
 
 INSERT INTO `recurso` 
-(`recurso_id`, `Nombre`, `Descripcion`, `Fecha`, `usuario_id`, `URL`, `Tamaño`, `Formato`)
+(`recurso_id`, `Nombre`, `Descripcion`, `Fecha`, `usuario_id`, `URL`, `Tamano`, `Formato`)
 VALUES 
 (NULL, 'Ejercicio', 'Ejercicio de IP de Redes', '2011-12-23', '2', 'www.redes.es', '64 KB', 'Txt');
 
 INSERT INTO `recurso` 
-(`recurso_id`, `Nombre`, `Descripcion`, `Fecha`, `usuario_id`, `URL`, `Tamaño`, `Formato`)
+(`recurso_id`, `Nombre`, `Descripcion`, `Fecha`, `usuario_id`, `URL`, `Tamano`, `Formato`)
 VALUES 
 (NULL, 'Plantilla Latex', 'Plantilla en Latex para cualquier asignatura', '2011-12-23', '5', 'www.latex.es', '10 KB', 'Ltx');
 
