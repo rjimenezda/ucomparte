@@ -16,13 +16,28 @@ include("../checkauth.php");
 
 //Progressbar de me-apago
 $(function() {
-	$( "#prgs_meapago" ).progressbar({
-		value: 50
+	$("#prgs_meapago").progressbar({
+		value: 0, 
+		complete: function(event, ui) { $("#meapagado").show(); location.replace("../logout.php"); }
 	});
+	$(".btn_meapago").click(function(){do_meapago();});
+
 
 	$.post("../api/getuserinfo.php", { usuario_id : <?php echo $_SESSION['usuario_id']; ?> }, function(data) { $("#nombrePerfil").text( data.Nombre )}, "json" );	
 	
+
 });
+
+function do_meapago(){
+	var currentValue = $("#prgs_meapago").progressbar("value");
+	if(currentValue==0)
+		$("#meapago").show();
+	if(currentValue<100){
+		currentValue+=10;
+		$("#prgs_meapago").progressbar("value", currentValue);
+		setTimeout('do_meapago()',50);
+	}
+}
 
 function show_new_group(){
 	document.getElementById('new_group').style.visibility="visible";
@@ -81,10 +96,10 @@ function cancel_new_group(){
             </div>
             <div class="header_right">
             	<div style="float:left; padding-left:20px">
-            		<a href="#"><font style="color:#999;">Me apago</font></a>
+            		<a class="btn_meapago" href="#" style="color:#999;">Me apago</a>
                 </div>
                 <div style="float:left;">
-                &nbsp;&nbsp;<a href="#"><img src="images/user_logout.png" alt="Apagarse" /></a>
+                &nbsp;&nbsp;<a class="btn_meapago" href="#"><img src="images/user_logout.png" alt="Apagarse" /></a>
                 </div>
             </div>
   		</div> 
@@ -141,7 +156,7 @@ function cancel_new_group(){
     
     <!-- end .sidebar1 --></div>
     <?php
-    if(!$_GET['content'])
+    if(!isset($_GET['content']))
         require("group_blackboard.php");
     else{
         if(file_exists($_GET['content'].".php"))
@@ -170,10 +185,12 @@ function cancel_new_group(){
     <!-- end .footer --></div>
   <!-- end .container --></div>
   
-  <div class="meapago">
+  <div id="meapago">
 	<p>Haz lo que tengas que hacer, que me apago</p> 
 	<div id="prgs_meapago"></div>
   </div>
+  
+  <div id="meapagado"></div>
   
 </body>
 
