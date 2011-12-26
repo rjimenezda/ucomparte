@@ -1,3 +1,7 @@
+<?php
+	session_start();
+?>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml" dir="ltr" lang="es-ES">
@@ -9,6 +13,7 @@
 <link rel="stylesheet" id="login-css" href="login.css" type="text/css" media="all">
 <script type="text/javascript" src="js/jquery-1.7.1.min.js"></script>
 <script language="javascript" type="text/javascript">
+
 function show_registration(){
 // 	document.getElementById('register').style.visibility="visible";
 	$("#register").fadeIn("slow");
