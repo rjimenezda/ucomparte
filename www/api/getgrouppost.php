@@ -18,13 +18,11 @@ else {
 
 
 	if ($totEmp> 0) {
-	   while ($rowEmp = mysql_fetch_assoc($resEmp)) {
-			// Imprimimos los resultados en JSON
-			echo json_encode($rowEmp);
+		while(($row = mysql_fetch_assoc($resEmp))) {
+	   		$resultArray[] = $row;
+	   	} 
+	   echo json_encode($resultArray);
 
-		//	echo "<strong>".$rowEmp['Recurso_id']."</strong><br>";
-		// 	echo "Direccion: ".$rowEmp['Contenido']."<br>";
-	   }
 	}
 }
 
