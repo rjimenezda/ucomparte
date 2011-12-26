@@ -12,7 +12,7 @@ if (!isset($_POST['usuario_id'])) {
 }
 
 else {
-	$queEmp = "SELECT * FROM usuario WHERE usuario_id=".$_POST['usuario_id'];
+	$queEmp = "SELECT nombre, apellidos, pais, localidad, provincia, sexo  FROM usuario WHERE usuario_id=".$_POST['usuario_id'];
 	$resEmp = mysql_query($queEmp, $conexion) or die(mysql_error());
 	$totEmp = mysql_num_rows($resEmp);
 

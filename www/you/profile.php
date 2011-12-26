@@ -1,15 +1,7 @@
 <script type="text/javascript">
 $(function(){
 	//Se hace la consulta para extraer el nombre completo
-<<<<<<< HEAD
-	$.post("../api/getuserinfo.php", { usuario_id : <?php echo $_SESSION['usuario_id']; ?> }, function(data) { $("#nombreCompleto").text( data.Nombre + " " +  data.Apellidos );}, "json" );
-
-	//Se hace la consulta para extraer los grupos a los que pertenece el usuario
-	$.post("../api/getusergrouplist.php", { usuario_id : <?php echo $_SESSION['usuario_id']; ?> }, fillUserGroupList, "json" )
-=======
-	$.post("../api/getuserinfo.php", { usuario_id : <?php echo $_SESSION['usuario_id']; ?> }, function(data) { $("#nombreCompleto").text( data.Nombre + " " +  data.Apellidos ); console.log(data)}, "json" )
-
->>>>>>> bc1cb3a49782515960a741ef7d30c31c9c793b1d
+	$.post("../api/getuserinfo.php", { usuario_id : <?php echo $_SESSION['usuario_id']; ?> }, function(data) { $("#nombreCompleto").text( data.nombre + " " +  data.apellidos ); console.log(data)}, "json" )
 })
 
 function fillUserGroupList(data){
