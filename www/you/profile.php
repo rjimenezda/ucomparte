@@ -1,7 +1,7 @@
 <script type="text/javascript">
 $(function(){
 	//Se hace la consulta para extraer el nombre completo
-	$.post("../api/getuserinfo.php", { usuario_id : <? echo $_SESSION['usuario_id']; ?> }, function(data) { $("#nombreCompleto").text( data.nombre + " " +  data.apellidos ); console.log(data)}, "json" )
+	$.post("../api/getuserinfo.php", { usuario_id : <?php echo $_SESSION['usuario_id']; ?> }, function(data) { $("#nombreCompleto").text( data.nombre + " " +  data.apellidos ); console.log(data)}, "json" )
 
 })
 </script>
