@@ -1,3 +1,5 @@
+<?php session_start();
+$_SESSION['usuario_id'] = 1; ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -54,6 +56,16 @@ function bind_events() {
 		$.post("api/getsubjectresources.php", { asignatura_id : 1 }, function(data) { $("#getsubjecteresources_txt")[0].value = data } )
 	})
 	
+	$("#getdegrees_btn").click(function (){
+		console.log("Sacando titulaciones")
+		$.post("api/getdegrees.php", function(data) { $("#getdegrees_txt")[0].value = data } )
+	})
+	
+	$("#getsubjects_btn").click(function (){
+		console.log("Sacando asignaturas de titulación")
+		$.post("api/getsubjects.php", { titulacion_id : 1 }, function(data) { $("#getsubjects_txt")[0].value = data } )
+	})
+	
 	// Inserciones
 	
 	$("#commentgroup_btn").click(function (){
@@ -106,6 +118,12 @@ $(document).ready(bind_events)
 
 <input type="button" value="getsubjecteresources" id="getsubjecteresources_btn"/><br />
 <textarea id="getsubjecteresources_txt" ></textarea><br />
+
+<input type="button" value="getdegrees" id="getdegrees_btn"/><br />
+<textarea id="getdegrees_txt" ></textarea><br />
+
+<input type="button" value="getsubjects" id="getsubjects_btn"/><br />
+<textarea id="getsubjects_txt" ></textarea><br />
 
 <h2>Inserción</h2>
 Publicacion ID => <input type="text" value="1" id="commentgroupid_txt"/><br />
