@@ -33,7 +33,7 @@ else {
 		exit("Login ok");
 	}
 	else{
-		header('Location: index.html?err=1');
+		header('Location: index.php?err=1');
 		die("Login incorrecto");
 	}
 	
