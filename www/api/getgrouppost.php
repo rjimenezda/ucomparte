@@ -12,7 +12,8 @@ if (!isset($_POST['publicacion_id'])) {
 }
 
 else {
-	$queEmp = "SELECT * FROM respuesta WHERE publicacion_id=".$_POST['publicacion_id'];
+	$queEmp = "SELECT  respuesta.contenido, DATE_FORMAT(respuesta.fecha, '%d %b %r') as Fecha, usuario.usuario_id, usuario.nombre, usuario.apellidos FROM respuesta, usuario WHERE publicacion_id = (SELECT publicacion_id FROM publicacion_grupo WHERE grupo_id IN 
+			  (SELECT grupo_id FROM grupo_usuario WHERE usuario_id =".$_SESSION['usuario_id'].") AND publicacion_id = ".$_POST['publicacion_id'].") AND usuario.usuario_id = respuesta.usuario_id ORDER BY fecha";
 	$resEmp = mysql_query($queEmp, $conexion) or die(mysql_error());
 	$totEmp = mysql_num_rows($resEmp);
 
