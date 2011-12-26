@@ -215,6 +215,7 @@ box-shadow: none;
 .yt-uix-button:hover,.yt-uix-button:focus,.yt-uix-button-hover{border-color:#999;background:#f3f3f3;background-image:-moz-linear-gradient(top,#ffffff,#ebebeb);background-image:-webkit-gradient(linear,left top,left bottom,from(#ffffff),to(#ebebeb));filter:progid:DXImageTransform.Microsoft.Gradient(startColorStr=#ffffff,endColorStr=#ebebeb);outline:0;-moz-box-shadow:0 0 3px #999;-webkit-box-shadow:0 0 3px #999;box-shadow:0 0 3px #999}.yt-uix-button:active,.yt-uix-button-active,.yt-uix-button-active:hover,.yt-uix-button-active:focus{border-color:#999;background:#ddd;background-image:-moz-linear-gradient(top,#cccccc,#ffffff);background-image:-webkit-gradient(linear,left top,left bottom,from(#cccccc),to(#ffffff));filter:progid:DXImageTransform.Microsoft.Gradient(startColorStr=#cccccc,endColorStr=#ffffff)}
 
 .masthead-search{
+	width: 300px;
 	height:23px;
 	white-space:nowrap;
 	vertical-align:middle;
