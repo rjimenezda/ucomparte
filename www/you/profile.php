@@ -1,11 +1,17 @@
 <script type="text/javascript">
 $(function(){
 	//Se hace la consulta para extraer el nombre completo
-	$.post("../api/getuserinfo.php", { usuario_id : <?php echo $_SESSION['usuario_id']; ?> }, function(data) { $("#nombreCompleto").text( data.Nombre + " " +  data.Apellidos )}, "json" )
+	$.post("../api/getuserinfo.php", { usuario_id : <?php echo $_SESSION['usuario_id']; ?> }, function(data) { $("#nombreCompleto").text( data.Nombre + " " +  data.Apellidos );}, "json" );
 
 	//Se hace la consulta para extraer los grupos a los que pertenece el usuario
-	$.post("../api/getusergrouplist.php", { usuario_id : <?php echo $_SESSION['usuario_id']; ?> }, function(data) { $("#nombreCompleto").text( data.Nombre + " " +  data.Apellidos )}, "json" )
+	$.post("../api/getusergrouplist.php", { usuario_id : <?php echo $_SESSION['usuario_id']; ?> }, fillUserGroupList, "json" )
 })
+
+function fillUserGroupList(data){
+	console.log(data);
+}
+
+
 </script>
 
 <div class="content">
