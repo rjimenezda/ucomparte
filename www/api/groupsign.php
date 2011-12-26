@@ -1,6 +1,7 @@
 <?php
 
-session_start();
+//Comprobacion de permisos del usuario
+include("../checkauth.php");
 
 include("../dataconnection.php");
 include ("../funciones.php");
