@@ -23,7 +23,7 @@ $(function() {
 	$(".btn_meapago").click(function(){do_meapago();});
 
 
-	$.post("../api/getuserinfo.php", { usuario_id : <?php echo $_SESSION['usuario_id']; ?> }, function(data) { $("#nombrePerfil").text( data.Nombre )}, "json" );	
+	$.post("../api/getuserinfo.php", { usuario_id : <?php echo $_SESSION['usuario_id']; ?> }, function(data) { $("#nombrePerfil").text( data.nombre )}, "json" );	
 	
 
 });
