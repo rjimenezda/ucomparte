@@ -12,7 +12,10 @@ if (!isset($_POST['usuario_id'])) {
 }
 
 else {
-	$queEmp = "SELECT recurso_id FROM usuario_recurso_apunte WHERE usuario_id=".$_POST['usuario_id'];
+	// Aquí no usamos $_SESSION['usuario_id']j por poder consultar los "meloapuntos" de otro
+	// Hace falta otra consulta para sacar cuánta gente en total se lo ha apuntado :(
+	$queEmp = "SELECT usuario_recurso_apunte.recurso_id, recurso.nombre, recurso.formato, recurso.tamano FROM recurso, usuario_recurso_apunte WHERE usuario_recurso_apunte.usuario_id =".$_POST['usuario_id']." AND recurso.recurso_id = usuario_recurso_apunte.recurso_id";
+	//$queEmp = "SELECT recurso_id FROM usuario_recurso_apunte WHERE usuario_id=".$_POST['usuario_id'];
 	$resEmp = mysql_query($queEmp, $conexion) or die(mysql_error());
 	$totEmp = mysql_num_rows($resEmp);
 
