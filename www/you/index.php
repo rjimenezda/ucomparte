@@ -20,8 +20,11 @@ $(function() {
 		value: 0, 
 		complete: function(event, ui) { $("#meapagado").show(); location.replace("../logout.php"); }
 	});
-	
 	$(".btn_meapago").click(function(){do_meapago();});
+
+
+	$.post("../api/getuserinfo.php", { usuario_id : <?php echo $_SESSION['usuario_id']; ?> }, function(data) { $("#nombrePerfil").text( data.Nombre )}, "json" );	
+	
 
 });
 
@@ -107,8 +110,7 @@ function cancel_new_group(){
     	<div style="float:left;">
         	<a href="#"><img src="images/photo.jpg" width="50px" height="50px" /></a>
         </div>
-        <div class="user_name">
-        	Jose David
+        <div id="nombrePerfil" class="user_name">
         </div>
     </div>
     <div class="user_group">
