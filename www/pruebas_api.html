@@ -49,6 +49,16 @@ function bind_events() {
 		$.post("api/getmeloapuntos.php", { usuario_id : 1 }, function(data) { $("#getmeloapuntos_txt")[0].value = data } )
 	})
 	
+	// Inserciones
+	
+	$("#commentgroup_btn").click(function (){
+		console.log("Insertando comentario")
+		pub_id = $("#commentgroupid_txt")[0].value
+		content = $("#commentgrouptxt_txt")[0].value
+		usuario_id = $("#commentgroupuid_txt")[0].value
+		$.post("api/commentgrouppost.php", { usuario_id : 1, publicacion_id : pub_id, contenido : content  }, function(data) { $("#commentgroup_area")[0].value = data } )
+	})
+	
 }
 
 $(document).ready(bind_events)
@@ -72,7 +82,7 @@ $(document).ready(bind_events)
 
 <input type="button" value="getgroupposts" id="getgroupposts_btn"/><br />
 <textarea id="getgroupposts_txt" ></textarea><br />
-
+	
 <input type="button" value="getusergroups" id="getusergroups_btn"/><br />
 <textarea id="getusergroups_txt" ></textarea><br />
 
@@ -83,5 +93,10 @@ $(document).ready(bind_events)
 <textarea id="getmeloapuntos_txt" ></textarea><br />
 
 <h2>Inserción</h2>
+Publicacion ID => <input type="text" value="1" id="commentgroupid_txt"/><br />
+Usuario => <input type="text" value="1" id="commentgroupuid_txt"/><br />
+Comentario => <input type="text" value="Como mola mi gramola" id="commentgrouptxt_txt"/><br />
+<input type="button" value="commentgroup" id="commentgroup_btn"/><br />
+<textarea id="commentgroup_area" ></textarea><br />
 </body>
 </html>
