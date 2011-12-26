@@ -2,8 +2,8 @@
 session_start();
 
 if(!isset($_SESSION['usuario_id'])) {
-    header("location: login.php");
     session_destroy();
+    header("location: /www/index.php?error='eeeeeeeeee'");
     exit();
 }
 

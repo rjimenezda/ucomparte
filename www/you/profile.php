@@ -1,3 +1,13 @@
+<script type="text/javascript">
+$(function(){
+	//Se hace la consulta para extraer el nombre completo
+	$.post("../api/getuserinfo.php", { usuario_id : <?php echo $_SESSION['usuario_id']; ?> }, function(data) { $("#nombreCompleto").text( data.Nombre + " " +  data.Apellidos )}, "json" )
+
+	//Se hace la consulta para extraer los grupos a los que pertenece el usuario
+	$.post("../api/getusergrouplist.php", { usuario_id : <?php echo $_SESSION['usuario_id']; ?> }, function(data) { $("#nombreCompleto").text( data.Nombre + " " +  data.Apellidos )}, "json" )
+})
+</script>
+
 <div class="content">
 	<div style="float:left; width:600px;margin-top:10px;border-bottom:1px solid #999; padding-bottom:10px;">
     	<div style=" float:left; margin-left:15px; width:200px;">
@@ -5,8 +15,7 @@
         </div>
     	<div style=" float:left; margin-left:15px; width:370px;">
         	<div style="float: left; width:100%; margin-bottom:15px;">
-                <font style="font-size:24px;">Jose David Expósito Cañete</font><br />
-                <font style="color:#999;">Ingeniería Informática</font><br /><br />
+                <font id="nombreCompleto" style="font-size:24px;"></font><br />
                 <font style=" font-size:18px;">Grupos a los que pertenece:</font>
         	</div>
         
