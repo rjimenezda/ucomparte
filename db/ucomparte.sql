@@ -28,7 +28,7 @@ DROP TABLE IF EXISTS `asignatura`;
 CREATE TABLE IF NOT EXISTS `asignatura` (
   `asignatura_id` int(6) NOT NULL AUTO_INCREMENT,
   `titulacion_id` int(6) NOT NULL,
-  `Nombre` varchar(50) NOT NULL,
+  `nombre` varchar(50) NOT NULL,
   PRIMARY KEY (`asignatura_id`,`titulacion_id`),
   KEY `titulacion_id` (`titulacion_id`)
 ) TYPE=InnoDB AUTO_INCREMENT=1 ;
@@ -46,12 +46,12 @@ CREATE TABLE IF NOT EXISTS `asignatura` (
 
 DROP TABLE IF EXISTS `comentario_recurso`;
 CREATE TABLE IF NOT EXISTS `comentario_recurso` (
-  `Comentario_id` int(6) NOT NULL AUTO_INCREMENT,
+  `comentario_id` int(6) NOT NULL AUTO_INCREMENT,
   `recurso_id` int(8) NOT NULL,
   `usuario_id` int(7) NOT NULL,
-  `Contenido` text NOT NULL,
-  `Fecha` date NOT NULL,
-  PRIMARY KEY (`Comentario_id`,`recurso_id`,`usuario_id`),
+  `contenido` text NOT NULL,
+  `fecha` date NOT NULL,
+  PRIMARY KEY (`comentario_id`,`recurso_id`,`usuario_id`),
   KEY `recurso_id` (`recurso_id`),
   KEY `usuario_id` (`usuario_id`)
 ) TYPE=InnoDB AUTO_INCREMENT=1 ;
@@ -70,9 +70,9 @@ CREATE TABLE IF NOT EXISTS `comentario_recurso` (
 DROP TABLE IF EXISTS `grupo`;
 CREATE TABLE IF NOT EXISTS `grupo` (
   `grupo_id` int(6) NOT NULL AUTO_INCREMENT,
-  `Nombre` varchar(20) NOT NULL,
-  `Descripcion` text,
-  `Fecha_alta` date NOT NULL,
+  `nombre` varchar(20) NOT NULL,
+  `descripcion` text,
+  `fecha_alta` date NOT NULL,
   PRIMARY KEY (`grupo_id`)
 ) TYPE=InnoDB AUTO_INCREMENT=1 ;
 
@@ -111,9 +111,9 @@ CREATE TABLE IF NOT EXISTS `publicacion_grupo` (
   `publicacion_id` int(6) NOT NULL AUTO_INCREMENT,
   `grupo_id` int(6) NOT NULL,
   `usuario_id` int(7) NOT NULL,
-  `Titulo` varchar(50) NOT NULL,
-  `Contenido` text NOT NULL,
-  `Fecha` date NOT NULL,
+  `titulo` varchar(50) NOT NULL,
+  `contenido` text NOT NULL,
+  `fecha` date NOT NULL,
   PRIMARY KEY (`publicacion_id`,`grupo_id`,`usuario_id`),
   KEY `grupo_id` (`grupo_id`),
   KEY `usuario_id` (`usuario_id`)
@@ -133,13 +133,13 @@ CREATE TABLE IF NOT EXISTS `publicacion_grupo` (
 DROP TABLE IF EXISTS `recurso`;
 CREATE TABLE IF NOT EXISTS `recurso` (
   `recurso_id` int(8) NOT NULL AUTO_INCREMENT,
-  `Nombre` varchar(30) NOT NULL,
-  `Descripcion` varchar(100) NOT NULL,
-  `Fecha` date NOT NULL,
+  `nombre` varchar(30) NOT NULL,
+  `descripcion` varchar(100) NOT NULL,
+  `fecha` date NOT NULL,
   `usuario_id` int(7) NOT NULL,
   `URL` varchar(200) NOT NULL,
-  `Tamano` varchar(10) NOT NULL,
-  `Formato` varchar(3) NOT NULL,
+  `tamano` varchar(10) NOT NULL,
+  `formato` varchar(3) NOT NULL,
   PRIMARY KEY (`recurso_id`),
   KEY `usuario_id` (`usuario_id`)
 ) TYPE=InnoDB AUTO_INCREMENT=1 ;
@@ -177,7 +177,7 @@ CREATE TABLE IF NOT EXISTS `recurso_asignatura` (
 DROP TABLE IF EXISTS `reporte`;
 CREATE TABLE IF NOT EXISTS `reporte` (
   `reporte_id` int(6) NOT NULL AUTO_INCREMENT,
-  `Contenido` text NOT NULL,
+  `contenido` text NOT NULL,
   PRIMARY KEY (`reporte_id`)
 ) TYPE=InnoDB AUTO_INCREMENT=1 ;
 
@@ -197,8 +197,8 @@ CREATE TABLE IF NOT EXISTS `respuesta` (
   `respuesta_id` int(6) NOT NULL AUTO_INCREMENT,
   `usuario_id` int(7) NOT NULL,
   `publicacion_id` int(6) NOT NULL,
-  `Contenido` text NOT NULL,
-  `Fecha` date NOT NULL,
+  `contenido` text NOT NULL,
+  `fecha` date NOT NULL,
   PRIMARY KEY (`respuesta_id`,`usuario_id`,`publicacion_id`),
   KEY `usuario_id` (`usuario_id`),
   KEY `publicacion_id` (`publicacion_id`)
@@ -218,7 +218,7 @@ CREATE TABLE IF NOT EXISTS `respuesta` (
 DROP TABLE IF EXISTS `titulacion`;
 CREATE TABLE IF NOT EXISTS `titulacion` (
   `titulacion_id` int(6) NOT NULL AUTO_INCREMENT,
-  `Nombre` varchar(50) NOT NULL,
+  `nombre` varchar(50) NOT NULL,
   PRIMARY KEY (`titulacion_id`)
 ) TYPE=InnoDB AUTO_INCREMENT=1 ;
 
@@ -236,19 +236,19 @@ CREATE TABLE IF NOT EXISTS `titulacion` (
 DROP TABLE IF EXISTS `usuario`;
 CREATE TABLE IF NOT EXISTS `usuario` (
   `usuario_id` int(7) NOT NULL AUTO_INCREMENT,
-  `Email` varchar(15) NOT NULL,
-  `Password` varchar(32) NOT NULL,
-  `Es_Administrador` tinyint(1) NOT NULL DEFAULT '0',
-  `Nombre` varchar(30) NOT NULL,
-  `Apellidos` varchar(60) NOT NULL,
-  `Pais` varchar(50) NOT NULL,
-  `Localidad` varchar(50) NOT NULL,
-  `Provincia` varchar(50) NOT NULL,
-  `Sexo` varchar(1) NOT NULL,
-  `Fecha_Nacimiento` date NOT NULL,
-  `Fecha_alta` date NOT NULL,
+  `email` varchar(15) NOT NULL,
+  `password` varchar(32) NOT NULL,
+  `es_administrador` tinyint(1) NOT NULL DEFAULT '0',
+  `nombre` varchar(30) NOT NULL,
+  `apellidos` varchar(60) NOT NULL,
+  `pais` varchar(50) NOT NULL,
+  `localidad` varchar(50) NOT NULL,
+  `provincia` varchar(50) NOT NULL,
+  `sexo` varchar(1) NOT NULL,
+  `fecha_Nacimiento` date NOT NULL,
+  `fecha_alta` date NOT NULL,
   PRIMARY KEY (`usuario_id`),
-  UNIQUE KEY `Email` (`Email`)
+  UNIQUE KEY `email` (`email`)
 ) TYPE=InnoDB AUTO_INCREMENT=1 ;
 
 --
@@ -334,45 +334,45 @@ ALTER TABLE `usuario_recurso_apunte`
   ADD CONSTRAINT `usuario_recurso_apunte_ibfk_1` FOREIGN KEY (`usuario_id`) REFERENCES `usuario` (`usuario_id`);
 
 INSERT INTO `usuario`
-(`usuario_id`, `Email`, `Password`, `Es_Administrador`, `Nombre`, `Apellidos`, `Pais`, `Localidad`, `Provincia`, `Sexo`, `Fecha_Nacimiento`, `Fecha_alta`) 
+(`usuario_id`, `email`, `password`, `es_administrador`, `nombre`, `apellidos`, `pais`, `localidad`, `provincia`, `sexo`, `fecha_Nacimiento`, `fecha_alta`) 
 VALUES 
 (NULL, 'i52cigam@uco.es', 'password', '0', 'Miguel Angel', 'Cid Garcia', 'España', 'Cordoba', 'Cordoba', 'H', '1986-12-02', '2011-12-23');
 
 INSERT INTO `usuario`
-(`usuario_id`, `Email`, `Password`, `Es_Administrador`, `Nombre`, `Apellidos`, `Pais`, `Localidad`, `Provincia`, `Sexo`, `Fecha_Nacimiento`, `Fecha_alta`) 
+(`usuario_id`, `email`, `password`, `es_administrador`, `nombre`, `apellidos`, `pais`, `localidad`, `provincia`, `sexo`, `fecha_Nacimiento`, `fecha_alta`) 
 VALUES 
 (NULL, 'i52gagac@uco.es', 'password', '1', 'Carlos', 'Garcia Garcia', 'España', 'Cordoba', 'Cordoba', 'H', '1987-06-17', '2011-12-23');
 
 INSERT INTO `usuario`
-(`usuario_id`, `Email`, `Password`, `Es_Administrador`, `Nombre`, `Apellidos`, `Pais`, `Localidad`, `Provincia`, `Sexo`, `Fecha_Nacimiento`, `Fecha_alta`) 
+(`usuario_id`, `email`, `password`, `es_administrador`, `nombre`, `apellidos`, `pais`, `localidad`, `provincia`, `sexo`, `fecha_Nacimiento`, `fecha_alta`) 
 VALUES 
 (NULL, 'i52jianr@uco.es', 'password', '1', 'Roman', 'Jimenez De Andres', 'España', 'Cordoba', 'Cordoba', 'H', '1987-06-02', '2011-12-23');
 
 INSERT INTO `usuario`
-(`usuario_id`, `Email`, `Password`, `Es_Administrador`, `Nombre`, `Apellidos`, `Pais`, `Localidad`, `Provincia`, `Sexo`, `Fecha_Nacimiento`, `Fecha_alta`) 
+(`usuario_id`, `email`, `password`, `es_administrador`, `nombre`, `apellidos`, `pais`, `localidad`, `provincia`, `sexo`, `fecha_Nacimiento`, `fecha_alta`) 
 VALUES 
 (NULL, 'i52besar@uco.es', 'password', '1', 'Rafael', 'Bernal Sanz', 'España', 'Cordoba', 'Cordoba', 'H', '1987-06-12', '2011-12-23');
 
 INSERT INTO `usuario`
-(`usuario_id`, `Email`, `Password`, `Es_Administrador`, `Nombre`, `Apellidos`, `Pais`, `Localidad`, `Provincia`, `Sexo`, `Fecha_Nacimiento`, `Fecha_alta`) 
+(`usuario_id`, `email`, `password`, `es_administrador`, `nombre`, `apellidos`, `pais`, `localidad`, `provincia`, `sexo`, `fecha_Nacimiento`, `fecha_alta`) 
 VALUES 
 (NULL, 'i52excaj@uco.es', 'password', '1', 'Jose David', 'Exposito Cañete', 'España', 'Cordoba', 'Cordoba', 'H', '1986-05-11', '2011-12-23');
 
-INSERT INTO `titulacion` (`titulacion_id`, `Nombre`) VALUES (NULL, 'Ingenieria Informatica');
+INSERT INTO `titulacion` (`titulacion_id`, `nombre`) VALUES (NULL, 'Ingenieria Informatica');
 
-INSERT INTO `titulacion` (`titulacion_id`, `Nombre`) VALUES (NULL, 'Ingenieria Tecnica Informatica Sistemas');
+INSERT INTO `titulacion` (`titulacion_id`, `nombre`) VALUES (NULL, 'Ingenieria Tecnica Informatica Sistemas');
 
-INSERT INTO `asignatura` (`asignatura_id`, `titulacion_id`, `Nombre`) VALUES (NULL, '1', 'Proyectos');
+INSERT INTO `asignatura` (`asignatura_id`, `titulacion_id`, `nombre`) VALUES (NULL, '1', 'Proyectos');
 
-INSERT INTO `asignatura` (`asignatura_id`, `titulacion_id`, `Nombre`) VALUES (NULL, '1', 'Redes');
+INSERT INTO `asignatura` (`asignatura_id`, `titulacion_id`, `nombre`) VALUES (NULL, '1', 'Redes');
 
-INSERT INTO `asignatura` (`asignatura_id`, `titulacion_id`, `Nombre`) VALUES (NULL, '1', 'Bioinformatica');
+INSERT INTO `asignatura` (`asignatura_id`, `titulacion_id`, `nombre`) VALUES (NULL, '1', 'Bioinformatica');
 
-INSERT INTO `asignatura` (`asignatura_id`, `titulacion_id`, `Nombre`) VALUES (NULL, '2', 'Matematica');
+INSERT INTO `asignatura` (`asignatura_id`, `titulacion_id`, `nombre`) VALUES (NULL, '2', 'Matematica');
 
-INSERT INTO `grupo` (`grupo_id`, `Nombre`, `Descripcion`, `Fecha_alta`) VALUES (NULL, 'Primera Fila', ' ', '2011-12-23');
+INSERT INTO `grupo` (`grupo_id`, `nombre`, `descripcion`, `fecha_alta`) VALUES (NULL, 'Primera Fila', ' ', '2011-12-23');
 
-INSERT INTO `grupo` (`grupo_id`, `Nombre`, `Descripcion`, `Fecha_alta`) VALUES (NULL, 'Segunda Fila', 'grupo para hablar sobre sudaderas ', '2011-12-23');
+INSERT INTO `grupo` (`grupo_id`, `nombre`, `descripcion`, `fecha_alta`) VALUES (NULL, 'Segunda Fila', 'grupo para hablar sobre sudaderas ', '2011-12-23');
 
 INSERT INTO `grupo_usuario` (`grupo_id`, `usuario_id`) VALUES ('1', '1');
 
@@ -385,42 +385,42 @@ INSERT INTO `grupo_usuario` (`grupo_id`, `usuario_id`) VALUES ('1', '4');
 INSERT INTO `grupo_usuario` (`grupo_id`, `usuario_id`) VALUES ('1', '5');
 
 INSERT INTO `publicacion_grupo` 
-(`publicacion_id`, `grupo_id`, `usuario_id`, `Titulo`, `Contenido`, `Fecha`)
+(`publicacion_id`, `grupo_id`, `usuario_id`, `titulo`, `contenido`, `fecha`)
 VALUES 
 (NULL, '1', '1', 'Cena de Navidad', '¿Donde y cuando quereis hacer la cena de Navidad?', '2011-12-23');
 
 INSERT INTO `publicacion_grupo` 
-(`publicacion_id`, `grupo_id`, `usuario_id`, `Titulo`, `Contenido`, `Fecha`)
+(`publicacion_id`, `grupo_id`, `usuario_id`, `titulo`, `contenido`, `fecha`)
 VALUES 
 (NULL, '2', '4', 'Nueva temporada de sudadertas', 'Ha empezado la nueva temporada de sudaderas y me gustaria que me dijeseis como me queda','2011-12-15');
 
 INSERT INTO `respuesta` 
-(`respuesta_id`, `usuario_id`, `publicacion_id`, `Contenido`, `Fecha`) 
+(`respuesta_id`, `usuario_id`, `publicacion_id`, `contenido`, `fecha`) 
 VALUES 
 (NULL, '2', '1', 'Pues yo quiero el Moriles el dia 26', '2011-12-23');
 
 INSERT INTO `respuesta` 
-(`respuesta_id`, `usuario_id`, `publicacion_id`, `Contenido`, `Fecha`) 
+(`respuesta_id`, `usuario_id`, `publicacion_id`, `contenido`, `fecha`) 
 VALUES 
 (NULL, '3', '1', 'A mi me gustaria el Juramento que se come de lujo', '2011-12-23');
 
 INSERT INTO `respuesta` 
-(`respuesta_id`, `usuario_id`, `publicacion_id`, `Contenido`, `Fecha`)
+(`respuesta_id`, `usuario_id`, `publicacion_id`, `contenido`, `fecha`)
 VALUES 
 (NULL, '5', '2', 'Pues te queda muy bien tio!', '2011-12-23');
 
 INSERT INTO `recurso` 
-(`recurso_id`, `Nombre`, `Descripcion`, `Fecha`, `usuario_id`, `URL`, `Tamano`, `Formato`)
+(`recurso_id`, `nombre`, `descripcion`, `fecha`, `usuario_id`, `URL`, `tamano`, `formato`)
 VALUES 
 (NULL, 'Practica 2', 'Memorias de la practica 2 de Bioinfo', '2011-12-23', '1', 'www.google.es', '2 MB', 'Pdf');
 
 INSERT INTO `recurso` 
-(`recurso_id`, `Nombre`, `Descripcion`, `Fecha`, `usuario_id`, `URL`, `Tamano`, `Formato`)
+(`recurso_id`, `nombre`, `descripcion`, `fecha`, `usuario_id`, `URL`, `tamano`, `formato`)
 VALUES 
 (NULL, 'Ejercicio', 'Ejercicio de IP de Redes', '2011-12-23', '2', 'www.redes.es', '64 KB', 'Txt');
 
 INSERT INTO `recurso` 
-(`recurso_id`, `Nombre`, `Descripcion`, `Fecha`, `usuario_id`, `URL`, `Tamano`, `Formato`)
+(`recurso_id`, `nombre`, `descripcion`, `fecha`, `usuario_id`, `URL`, `tamano`, `formato`)
 VALUES 
 (NULL, 'Plantilla Latex', 'Plantilla en Latex para cualquier asignatura', '2011-12-23', '5', 'www.latex.es', '10 KB', 'Ltx');
 
@@ -445,16 +445,16 @@ INSERT INTO `usuario_recurso_apunte` (`usuario_id`, `recurso_id`) VALUES ('5', '
 INSERT INTO `usuario_recurso_apunte` (`usuario_id`, `recurso_id`) VALUES ('1', '3');
 
 INSERT INTO `comentario_recurso` 
-(`Comentario_id`, `recurso_id`, `usuario_id`, `Contenido`, `Fecha`)
+(`comentario_id`, `recurso_id`, `usuario_id`, `contenido`, `fecha`)
 VALUES 
 (NULL, '1', '2', 'La verdad que estas practicas estan muy bien', '2011-12-23');
 
 INSERT INTO `comentario_recurso` 
-(`Comentario_id`, `recurso_id`, `usuario_id`, `Contenido`, `Fecha`)
+(`comentario_id`, `recurso_id`, `usuario_id`, `contenido`, `fecha`)
 VALUES 
 (NULL, '2', '1', 'El ejercicio esta bien resuelto', '2011-12-23');
 
-INSERT INTO `reporte` (`reporte_id`, `Contenido`) VALUES (NULL, 'El recurso 1 esta mal');
+INSERT INTO `reporte` (`reporte_id`, `contenido`) VALUES (NULL, 'El recurso 1 esta mal');
 
 
 

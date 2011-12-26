@@ -11,14 +11,14 @@ if (!isset($_POST['log']) || !isset($_POST['pwd'])) {
 }
 
 else {
-	$queEmp = "SELECT * FROM usuario WHERE Email='".$_POST['log']."'";
+	$queEmp = "SELECT * FROM usuario WHERE email='".$_POST['log']."'";
 	$resEmp = mysql_query($queEmp, $conexion) or die(mysql_error());
 	$totEmp = mysql_num_rows($resEmp);
 
 	$loginOk=false;
 	if ($totEmp> 0) {
 	   while ($rowEmp = mysql_fetch_assoc($resEmp)){
-			if($rowEmp['Password']==$_POST['pwd']){
+			if($rowEmp['password']==$_POST['pwd']){
 				$_SESSION['usuario_id'] = $rowEmp['usuario_id'];
 				$loginOk=true;
 				break;
