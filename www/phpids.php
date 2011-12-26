@@ -20,7 +20,7 @@
 set_include_path(
     get_include_path()
     . PATH_SEPARATOR
-    . '/phpids/lib/'
+    . 'phpids/lib/'
 );
 
 if (!session_id()) {
