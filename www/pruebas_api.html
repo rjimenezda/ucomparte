@@ -49,6 +49,11 @@ function bind_events() {
 		$.post("api/getmeloapuntos.php", { usuario_id : 1 }, function(data) { $("#getmeloapuntos_txt")[0].value = data } )
 	})
 	
+	$("#getsubjecteresources_btn").click(function (){
+		console.log("Sacando recursos de asignatura")
+		$.post("api/getsubjectresources.php", { asignatura_id : 1 }, function(data) { $("#getsubjecteresources_txt")[0].value = data } )
+	})
+	
 	// Inserciones
 	
 	$("#commentgroup_btn").click(function (){
@@ -98,6 +103,9 @@ $(document).ready(bind_events)
 
 <input type="button" value="getmeloapuntos" id="getmeloapuntos_btn"/><br />
 <textarea id="getmeloapuntos_txt" ></textarea><br />
+
+<input type="button" value="getsubjecteresources" id="getsubjecteresources_btn"/><br />
+<textarea id="getsubjecteresources_txt" ></textarea><br />
 
 <h2>Inserción</h2>
 Publicacion ID => <input type="text" value="1" id="commentgroupid_txt"/><br />

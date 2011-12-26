@@ -4,14 +4,14 @@ session_start();
 
 include("../dataconnection.php");
 
-if (!isset($_POST['grupo_id'])) {
+if (!isset($_POST['asignatura_id'])) {
 	header('HTTP/1.1 500 Internal Server Error');
 	mysql_close($conexion);
 	die();
 }
 
 else {
-	$queEmp = "SELECT * FROM publicacion_grupo WHERE grupo_id=".$_POST['grupo_id'];
+	$queEmp = "SELECT * FROM recurso WHERE recurso_id IN (SELECT recurso_id FROM recurso_asignatura WHERE asignatura_id =".$_POST['asignatura_id'].")";
 	$resEmp = mysql_query($queEmp, $conexion) or die(mysql_error());
 	$totEmp = mysql_num_rows($resEmp);
 
