@@ -59,6 +59,13 @@ function bind_events() {
 		$.post("api/commentgrouppost.php", { usuario_id : 1, publicacion_id : pub_id, contenido : content  }, function(data) { $("#commentgroup_area")[0].value = data } )
 	})
 	
+	$("#groupsign_btn").click(function (){
+		console.log("Apuntando usuario a grupo")
+		group_id = $("#groupsigngid_txt")[0].value
+		usuario_id = $("#groupsignuid_txt")[0].value
+		$.post("api/groupsign.php", { usuario_id : 1, grupo_id : group_id  }, function(data) { $("#groupsign_area")[0].value = data } )
+	})
+	
 }
 
 $(document).ready(bind_events)
@@ -98,5 +105,11 @@ Usuario => <input type="text" value="1" id="commentgroupuid_txt"/><br />
 Comentario => <input type="text" value="Como mola mi gramola" id="commentgrouptxt_txt"/><br />
 <input type="button" value="commentgroup" id="commentgroup_btn"/><br />
 <textarea id="commentgroup_area" ></textarea><br />
+
+Grupo ID => <input type="text" value="1" id="groupsigngid_txt"/><br />
+Usuario => <input type="text" value="1" id="groupsignuid_txt"/><br />
+<input type="button" value="groupsign" id="groupsign_btn"/><br />
+<textarea id="groupsign_area" ></textarea><br />
+
 </body>
 </html>
