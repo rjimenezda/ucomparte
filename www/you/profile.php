@@ -3,6 +3,15 @@ $(function(){
 	//Se hace la consulta para extraer el nombre completo
 	$.post("../api/getuserinfo.php", { usuario_id : <? echo $_SESSION['usuario_id']; ?> }, function(data) { $("#nombreCompleto").text( data.nombre + " " +  data.apellidos ); console.log(data)}, "json" )
 
+	$.post("../api/getusergrouplist.php", { usuario_id : <? echo $_SESSION['usuario_id']; ?> }, fillusergroups, "json" )
+
+	function fillusergroups(data){
+		$("#group_list_placeholder").empty();
+		$.each(data, function(i, grupo){
+			$("#group_list_placeholder").append("<img src='images/icon_group.png' width='20' height='20' style='float:left;' />").append($("<span style='color:#999;'>").text(grupo.nombre)).append("<br style='clear:both;' />");
+		})
+	}
+	
 })
 </script>
 
@@ -18,22 +27,10 @@ $(function(){
         	</div>
         
             <!-- Se cargan los grupos a los que pertenece el usuario-->
-            <div style="float: left; width:100%">
-                <div style="float:left;">
-                    <a href="#"><img src="images/icon_group.png" width="20" height="20" /></a>
-                </div>
-                <div style="float:left; margin-left:3px; padding-top:2px;">
-                    <a href="#"><font style="color:#999; margin-top:2px">Primera Fila</font><br /></a>
-                </div>
-            </div>
-            <div style="float: left; width:100%">
-                <div style="float:left">
-                    <a href="#"><img src="images/icon_group.png" width="20" height="20" /></a>
-                </div>
-                <div style="float:left; margin-left:3px; padding-top:2px;">
-                    <a href="#"><font style="color:#999; margin-top:2px">2º I.Informática</font><br /></a>
-                </div> 
-            </div>        
+			<div id="group_list_placeholder">
+				<font style="color:#999; margin-top:2px">Cargando...</font><br />
+			</div>
+			       
     	</div>    
       
     </div>
