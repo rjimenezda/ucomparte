@@ -21,7 +21,7 @@ $(function() {
 		complete: function(event, ui) { $("#meapagado").show(); location.replace("../logout.php"); }
 	});
 	$(".btn_meapago").click(function(){do_meapago();});
-
+	
 
 	$.post("../api/getuserinfo.php", { usuario_id : <?php echo $_SESSION['usuario_id']; ?> }, function(data) { $("#nombrePerfil").text( data.nombre )}, "json" );	
 	
@@ -86,10 +86,10 @@ function cancel_new_group(){
                     <a href="index.php?content=notes" title="Apuntes"><img src="images/notes.png" alt="Apuntes" width="50" height="50"/></a>
                 </div>
             	<div class="search">
-                	<form id="searchForm" method="post" action="" target="_self">		
+                	<form id="searchForm" method="post" action="index.php?content=search" target="_self">		
                     
                     	<input id="searchBox" class="masthead-search" autocomplete="off" type="text" maxlength="2048" label="Buscar en UCOmparte" placeholder="Buscar en UCOmparte" size="50" />
-                        <button class="yt-uix-button" onclick="" type="submit" id="search-btn" dir="ltr" tabindex="2" role="button"><span class="yt-uix-button-content">Buscar </span></button>
+                        <button class="yt-uix-button" onclick="" type="submit" id="search-btn" dir="ltr" tabindex="2" role="button"><span class="yt-uix-button-content">Buscar</span></button>
                     </form>
                   
             	</div>
