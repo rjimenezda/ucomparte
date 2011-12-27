@@ -332,6 +332,17 @@ ALTER TABLE `respuesta`
 ALTER TABLE `usuario_recurso_apunte`
   ADD CONSTRAINT `usuario_recurso_apunte_ibfk_2` FOREIGN KEY (`recurso_id`) REFERENCES `recurso` (`recurso_id`),
   ADD CONSTRAINT `usuario_recurso_apunte_ibfk_1` FOREIGN KEY (`usuario_id`) REFERENCES `usuario` (`usuario_id`);
+  
+-- Vistas
+
+CREATE VIEW meloapuntos_count AS
+SELECT recurso_id, COUNT(usuario_id) meloapuntos FROM usuario_recurso_apunte GROUP BY(recurso_id);
+
+CREATE VIEW detalles_recursos AS 
+SELECT recurso.recurso_id, recurso.nombre, recurso.descripcion, recurso.tamano, meloapuntos_count.meloapuntos FROM recurso INNER JOIN meloapuntos_count ON meloapuntos_count.recurso_id = recurso.recurso_id;
+
+CREATE VIEW recursos_detalles_usuarios AS 
+SELECT detalles_recursos.recurso_id, detalles_recursos.nombre, detalles_recursos.descripcion, detalles_recursos.tamano, detalles_recursos.meloapuntos, usuario_recurso_apunte.usuario_id FROM usuario_recurso_apunte INNER JOIN detalles_recursos ON usuario_recurso_apunte.recurso_id = detalles_recursos.recurso_id;
 
 INSERT INTO `usuario`
 (`usuario_id`, `email`, `password`, `es_administrador`, `nombre`, `apellidos`, `pais`, `localidad`, `provincia`, `sexo`, `fecha_Nacimiento`, `fecha_alta`) 
@@ -356,7 +367,7 @@ VALUES
 INSERT INTO `usuario`
 (`usuario_id`, `email`, `password`, `es_administrador`, `nombre`, `apellidos`, `pais`, `localidad`, `provincia`, `sexo`, `fecha_Nacimiento`, `fecha_alta`) 
 VALUES 
-(NULL, 'i52excaj@uco.es', 'password', '1', 'Jose David', 'Exposito Cañete', 'España', 'Cordoba', 'Cordoba', 'H', '1986-05-11', '2011-12-23');
+(NULL, 'i52excaj@uco.es', 'password', '1', 'Jose David', 'Exposito Canete', 'España', 'Cordoba', 'Cordoba', 'H', '1986-05-11', '2011-12-23');
 
 INSERT INTO `titulacion` (`titulacion_id`, `nombre`) VALUES (NULL, 'Ingenieria Informatica');
 
