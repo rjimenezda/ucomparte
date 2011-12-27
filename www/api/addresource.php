@@ -25,7 +25,25 @@ else {
 	//TIPO PJPEG para IE
 	if (isset($_POST['Enviado'])) {
 		if ($_POST['Enviado']==1) {
-			if ($_FILES['userfile']['type']=="image/jpeg" || ($_FILES['userfile']['type']=="image/pjpeg") ) {
+			if ($_FILES['userfile']['type']=="image/jpeg" or //jpg, jpeg, jpe
+				($_FILES['userfile']['type']=="image/pjpeg") or
+				($_FILES['userfile']['type']=="image/gif") or //gif
+				($_FILES['userfile']['type']=="application/pdf") or //pdf
+				($_FILES['userfile']['type']=="application/x-latex") or //latex
+				($_FILES['userfile']['type']=="multipart/x-zip") or //zip
+				($_FILES['userfile']['type']=="multipart/x-gzip") or //gz, gzip
+				($_FILES['userfile']['type']=="application/x-tar") or //tar
+				($_FILES['userfile']['type']=="application/zip") or //man
+				($_FILES['userfile']['type']=="application/gnutar") or //tgz
+				($_FILES['userfile']['type']=="application/x-rar") or //rar
+				($_FILES['userfile']['type']=="application/x-rar-compressed") or //rar
+				($_FILES['userfile']['type']=="text/plain") or //txt, g, h, c, cc, hh, m, f90
+				($_FILES['userfile']['type']=="application/mspowerpoint") or //pot, pps, ppz, ppt, ppa, 
+				($_FILES['userfile']['type']=="application/msword") or //doc, dot
+				($_FILES['userfile']['type']=="application/vnd.ms-excel") or //xlb, xlc, xll, xlm, xls, xlw
+				($_FILES['userfile']['type']=="application/x-excel") or //xla, xlb, xlc, xld, xlk, xll, xlm, xls, xlt, xlv, xlw
+				($_FILES['userfile']['type']=="application/richtext") //rt, rtf, rtx
+			) {
 				if (is_uploaded_file($_FILES['userfile']['tmp_name'])) {
 				
 					//Extrae el formato
@@ -49,13 +67,11 @@ else {
 						// print_r($_FILES);
 					}
 				}
-//				echo "Mostrando la imagen<br>"; echo '<img src="'. $nombre_fichero .'">';
 			}	
 			//En caso de que no sea un jpg, no permitir el envio
 			else echo "ERRORFORMATO";
 		}
 	}
 }
-
 mysql_close($conexion);
 ?>
