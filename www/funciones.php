@@ -6,5 +6,6 @@ function terminate($conexion, $error = false, $errormsg = '') {
 		header('HTTP/1.1 500 Internal Server Error');
 		die('ERROR: '.$errormsg);
 	}
+	
 }
 ?>
