@@ -2,32 +2,29 @@
 
 //Comprobacion de permisos del usuario
 include("../checkauth.php");
-
+include("../funciones.php");
 include("../dataconnection.php");
 
-if (!isset($_POST['usuario_id']) or !isset($_POST['publicacion_id']) or !isset($_POST['contenido'])) {
-	header('HTTP/1.1 500 Internal Server Error');
-	mysql_close($conexion);
-	die();
+if (!isset($_POST['publicacion_id']) or 
+	!isset($_POST['contenido']) or
+	$_POST['contenido'] == "") {
+	terminate($conexion, true, "Bad Parameters");
 }
 
 else {
-	$queEmp = "INSERT INTO respuesta VALUES(NULL, ".$_POST['usuario_id'].", ".$_POST['publicacion_id'].", '".$_POST['contenido']."', NOW())";
-	$resEmp = mysql_query($queEmp, $conexion) or die(mysql_error());
-//	$totEmp = mysql_num_rows($resEmp);
-
-
-//	if ($totEmp> 0) {
-//	   while ($rowEmp = mysql_fetch_assoc($resEmp)) {
-			// Imprimimos los resultados en JSON
-//			echo json_encode($rowEmp);
-
-		//	echo "<strong>".$rowEmp['Recurso_id']."</strong><br>";
-		// 	echo "Direccion: ".$rowEmp['Contenido']."<br>";
-//	   }
-//	}
-	echo 'OK';
+	
+	// Comprobamos si el usuario está en el grupo de esa publicación con una consulta super reshulona que me he inventado
+	$valQuery = "SELECT grupo_usuario.usuario_id FROM publicacion_grupo INNER JOIN grupo_usuario ON publicacion_grupo.grupo_id = grupo_usuario.grupo_id WHERE publicacion_id =".$_POST['publicacion_id']." AND grupo_usuario.usuario_id =".$_SESSION['usuario_id'];
+	$valRes = mysql_query($valQuery, $conexion) or terminate($conexion, true, mysql_error());
+	$num_rows = mysql_num_rows($valRes);
+	
+	if ($num_rows == 0) {
+		terminate($conexion, true, "No permission");
+	}
+	
+	$queEmp = "INSERT INTO respuesta VALUES(NULL, ".$_SESSION['usuario_id'].", ".$_POST['publicacion_id'].", '".$_POST['contenido']."', NOW())";
+	$resEmp = mysql_query($queEmp, $conexion) or terminate($conexion, true, mysql_error());
 }
 
-mysql_close($conexion);
+terminate($conexion);
 ?>
