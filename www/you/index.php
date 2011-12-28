@@ -66,6 +66,15 @@ $(function() {
 		complete: function(event, ui) { $("#meapagado").show(); location.replace("../logout.php"); }
 	});
 	$(".btn_meapago").click(function(){do_meapago();});
+
+	$('#loadingFixed')
+    .hide()  // hide it initially
+    .ajaxStart(function() {
+        $(this).show();
+    })
+    .ajaxStop(function() {
+        $(this).hide();
+    });
 	
 
 	$.post("../api/getuserinfo.php", { usuario_id : <?php echo $_SESSION['usuario_id']; ?> }, function(data) { $("#nombrePerfil").text( data.nombre )}, "json" );	
@@ -95,6 +104,7 @@ function cancel_new_group(){
 </head>
 
 <body>
+<div id="loadingFixed"><span>Cargando...</span></div>
 <div id="manisero">
 <object width="480" height="360"><param name="movie" value="http://www.youtube.com/v/jTwpcCUSVhI?version=3&amp;hl=es_ES"></param><param name="allowFullScreen" value="true"></param><param name="allowscriptaccess" value="always"></param><embed src="http://www.youtube.com/v/jTwpcCUSVhI?version=3&amp;hl=es_ES&autoplay=1&start=9.5&autohide=1" type="application/x-shockwave-flash" width="480" height="360" allowscriptaccess="always" allowfullscreen="true"></embed></object>
 <input id="hidemanisero" type="button" value="Cerrar Manisero" style="display:block; width: 480px"/>
@@ -131,7 +141,7 @@ function cancel_new_group(){
             <div class="header_center">
             	<div class="menu_icons">
                 	<a href="index.php?content=group_blackboard" title="Home"><img src="images/home.png" alt="Home" width="50" height="50"/></a>
-                    <a href="index.php?content=profile" title="Perfil"><img src="images/profile.png" alt="Perfil" width="50" height="50"/></a>
+                    <a href="index.php?content=profile&uid=<?php echo $_SESSION['usuario_id']; ?>" title="Perfil"><img src="images/profile.png" alt="Perfil" width="50" height="50"/></a>
                     <a href="index.php?content=notes" title="Apuntes"><img src="images/notes.png" alt="Apuntes" width="50" height="50"/></a>
                 </div>
             	<div class="search">

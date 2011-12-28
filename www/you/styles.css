@@ -346,4 +346,16 @@ ul.nav a:hover, ul.nav a:active, ul.nav a:focus { /* esto cambia el color de fon
 	width: 480px;
 	display: none;
 }
+#loadingFixed {
+	color: white;
+	font-weight: bold;
+	position: fixed;
+	background-color: #90010C;
+	padding: 2px 3px;
+	border-radius: 5px;
+	font-size: 10px;
+	top: 0px;
+	left: 50%;
+	display: none;
+}
 -->

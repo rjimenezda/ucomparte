@@ -1,14 +1,13 @@
 <script type="text/javascript">
 $(function(){
 	//Se hace la consulta para extraer el nombre completo
-	$.post("../api/getuserinfo.php", { usuario_id : <?php echo $_SESSION['usuario_id']; ?> }, function(data) { $("#nombreCompleto").text( data.nombre + " " +  data.apellidos ); console.log(data)}, "json" )
-
-	$.post("../api/getusergrouplist.php", { usuario_id : <?php echo $_SESSION['usuario_id']; ?> }, fillusergroups, "json" )
+	$.post("../api/getuserinfo.php", { usuario_id : <?php echo $_GET['uid']; ?> }, function(){}, "json" ).success(function(data) { $("#nombreCompleto").text( data.nombre + " " +  data.apellidos );})
+	$.post("../api/getusergrouplist.php", { usuario_id : <?php echo $_GET['uid']; ?> }, function(){}, "json" ).success(fillusergroups);
 
 	function fillusergroups(data){
 		$("#group_list_placeholder").empty();
 		$.each(data, function(i, grupo){
-			$("#group_list_placeholder").append("<img src='images/icon_group.png' width='20' height='20' style='float:left;' />").append($("<span style='color:#999;'>").text(grupo.nombre)).append("<br style='clear:both;' />");
+			$("#group_list_placeholder").append("<img src='images/icon_group.png' width='20' height='20' style='float:left;' />").append($("<a style='color:#999;'>").attr("href", "index.php?content=group_blackboard&id="+grupo.grupo_id).text(grupo.nombre)).append("<br style='clear:both;' />");
 		})
 	}
 	
@@ -18,10 +17,10 @@ $(function(){
 <div class="content">
 	<div style="float:left; width:600px;margin-top:10px;border-bottom:1px solid #999; padding-bottom:10px;">
     	<div style=" float:left; margin-left:15px; width:200px;">
-    		<img src="users_images/<?php if (!file_exists("users_images/" . $_SESSION['usuario_id'] . ".jpg")) {
-        			echo "default_male.jpg"; 
+    		<img src="users_images/<?php if (!file_exists("users_images/" . $_GET['uid'] . ".jpg")) {
+        			echo "default_male.jpg";
         		} else {
-        			echo $_SESSION['usuario_id'] . ".jpg";
+        			echo $_GET['uid'] . ".jpg";
         		}?>" width="200px" height="200px" />
         </div>
     	<div style=" float:left; margin-left:15px; width:370px;">
