@@ -1,10 +1,10 @@
 <?php
-function terminate($error = false) {
-	mysql_close($conexion);
+function terminate($conexion, $error = false, $errormsg = '') {
+	mysql_close($conexionasd);
 	
 	if ($error) {
 		header('HTTP/1.1 500 Internal Server Error');
-		die();
+		die('ERROR: '.$errormsg);
 	}
 }
 ?>
