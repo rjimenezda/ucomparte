@@ -2,32 +2,20 @@
 
 //Comprobacion de permisos del usuario
 include("../checkauth.php");
-
+include("../funciones.php");
 include("../dataconnection.php");
 
-if (!isset($_POST['recurso_id']) or !isset($_POST['usuario_id']) or !isset($_POST['contenido'])) {
-	header('HTTP/1.1 500 Internal Server Error');
-	mysql_close($conexion);
-	die();
+if (!isset($_POST['recurso_id']) or
+	!isset($_POST['contenido']) or
+	!is_numeric($_POST['recurso_id']) or 
+	$_POST['contenido'] == "") {
+	terminate($conexion, true, "Bad Parameters");
 }
 
 else {
-	$queEmp = "INSERT INTO comentario_recurso VALUES(NULL, ".$_POST['recurso_id'].", ".$_POST['usuario_id'].", '".$_POST['contenido']."', NOW())";
-	$resEmp = mysql_query($queEmp, $conexion) or die(mysql_error());
-//	$totEmp = mysql_num_rows($resEmp);
-
-
-//	if ($totEmp> 0) {
-//	   while ($rowEmp = mysql_fetch_assoc($resEmp)) {
-			// Imprimimos los resultados en JSON
-//			echo json_encode($rowEmp);
-
-		//	echo "<strong>".$rowEmp['Recurso_id']."</strong><br>";
-		// 	echo "Direccion: ".$rowEmp['Contenido']."<br>";
-//	   }
-//	}
-	echo 'OK';
+	$queEmp = "INSERT INTO comentario_recurso VALUES(NULL, ".$_POST['recurso_id'].", ".$_SESSION['usuario_id'].", '".$_POST['contenido']."', NOW())";
+	$resEmp = mysql_query($queEmp, $conexion) or terminate($conexion, true, mysql_error());
 }
 
-mysql_close($conexion);
+terminate($conexion)
 ?>
