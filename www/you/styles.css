@@ -334,4 +334,16 @@ ul.nav a:hover, ul.nav a:active, ul.nav a:focus { /* esto cambia el color de fon
 #prgs_meapago{
 	margin: 50px;
 }
+#manisero {
+	top: 50%;
+	left: 50%;
+	margin-left: -247px;
+	margin-top: -187px;
+	position: absolute;
+	background: black;
+	border-radius: 20px;
+	padding: 15px;
+	width: 480px;
+	display: none;
+}
 -->

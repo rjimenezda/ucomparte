@@ -14,6 +14,51 @@ include("../checkauth.php");
 <script type="text/javascript" src="../js/jquery-ui-1.8.16.min.js"></script>
 <script language="javascript" type="text/javascript">
 
+function checkCombo() {
+	if (current.length == combo.length) {
+		return current.toString() == combo.toString();
+	} else {
+		for (i = 0; i < current.length; i++) {
+			if (current[i] != combo[i]) {
+				current = [];
+				return false;
+			}
+		}
+	}
+}
+
+// Keycodes para manisero
+combo = [109, 97, 110, 105, 115, 101, 114, 111]
+current = []
+isPlaying = false;
+isFocused = false;
+
+$(function() {
+	
+	$("input").focusin(function() {
+		isFocused = true;
+	})
+	
+	$("input").blur(function() {
+		isFocused = false;
+	});
+
+	$(document).keypress(function(e){
+			if (!isPlaying && !isFocused) {
+			current.push(e.charCode);
+			if (checkCombo()) {
+				isPlaying = true;
+				$("#manisero").show();
+			}
+			}
+	})
+	$("#hidemanisero").click(function() {
+		isPlaying = false;
+		$("#manisero").hide();
+	})
+
+});
+
 //Progressbar de me-apago
 $(function() {
 	$("#prgs_meapago").progressbar({
@@ -50,6 +95,10 @@ function cancel_new_group(){
 </head>
 
 <body>
+<div id="manisero">
+<object width="480" height="360"><param name="movie" value="http://www.youtube.com/v/jTwpcCUSVhI?version=3&amp;hl=es_ES"></param><param name="allowFullScreen" value="true"></param><param name="allowscriptaccess" value="always"></param><embed src="http://www.youtube.com/v/jTwpcCUSVhI?version=3&amp;hl=es_ES&autoplay=1&start=9.5&autohide=1" type="application/x-shockwave-flash" width="480" height="360" allowscriptaccess="always" allowfullscreen="true"></embed></object>
+<input id="hidemanisero" type="button" value="Cerrar Manisero" style="display:block; width: 480px"/>
+</div>
 <div class="new_group" id="new_group" style="height:194px">
 	<div style="float:left; width:100%; height:100%">
     	
