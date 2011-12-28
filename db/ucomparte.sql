@@ -70,7 +70,7 @@ CREATE TABLE IF NOT EXISTS `comentario_recurso` (
 DROP TABLE IF EXISTS `grupo`;
 CREATE TABLE IF NOT EXISTS `grupo` (
   `grupo_id` int(6) NOT NULL AUTO_INCREMENT,
-  `nombre` varchar(20) NOT NULL,
+  `nombre` varchar(20) NOT NULL UNIQUE,
   `descripcion` text,
   `fecha_alta` date NOT NULL,
   PRIMARY KEY (`grupo_id`)
