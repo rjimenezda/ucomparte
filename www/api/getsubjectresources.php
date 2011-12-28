@@ -12,7 +12,8 @@ if (!isset($_POST['asignatura_id'])) {
 }
 
 else {
-	$queEmp = "SELECT * FROM recurso WHERE recurso_id IN (SELECT recurso_id FROM recurso_asignatura WHERE asignatura_id =".$_POST['asignatura_id'].")";
+	# $queEmp = "SELECT * FROM recurso WHERE recurso_id IN (SELECT recurso_id FROM recurso_asignatura WHERE asignatura_id =".$_POST['asignatura_id'].")";
+	$queEmp = "SELECT * FROM recursos_detalles_asignatura WHERE asignatura_id=".$_POST['asignatura_id'];
 	$resEmp = mysql_query($queEmp, $conexion) or die(mysql_error());
 	$totEmp = mysql_num_rows($resEmp);
 

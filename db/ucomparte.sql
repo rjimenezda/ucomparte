@@ -344,6 +344,9 @@ SELECT recurso.recurso_id, recurso.nombre, recurso.descripcion, recurso.tamano, 
 CREATE VIEW recursos_detalles_usuarios AS 
 SELECT detalles_recursos.recurso_id, detalles_recursos.nombre, detalles_recursos.descripcion, detalles_recursos.tamano, detalles_recursos.meloapuntos, usuario_recurso_apunte.usuario_id FROM usuario_recurso_apunte INNER JOIN detalles_recursos ON usuario_recurso_apunte.recurso_id = detalles_recursos.recurso_id;
 
+CREATE VIEW recursos_detalles_asignatura AS
+SELECT detalles_recursos.recurso_id, detalles_recursos.nombre, detalles_recursos.descripcion, detalles_recursos.tamano, detalles_recursos.meloapuntos, recurso_asignatura.asignatura_id FROM recurso_asignatura INNER JOIN detalles_recursos ON recurso_asignatura.recurso_id = detalles_recursos.recurso_id; 
+
 INSERT INTO `usuario`
 (`usuario_id`, `email`, `password`, `es_administrador`, `nombre`, `apellidos`, `pais`, `localidad`, `provincia`, `sexo`, `fecha_Nacimiento`, `fecha_alta`) 
 VALUES 
