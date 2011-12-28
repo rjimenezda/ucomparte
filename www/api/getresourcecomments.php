@@ -12,7 +12,7 @@ if (!isset($_POST['recurso_id'])) {
 }
 
 else {
-	$queEmp = "SELECT * FROM comentario_recurso WHERE recurso_id=".$_POST['recurso_id'];
+	$queEmp = "SELECT comentario_recurso.comentario_id, comentario_recurso.contenido, DATE_FORMAT(comentario_recurso.fecha, '%d %b %r'), usuario.usuario_id, usuario.nombre, usuario.apellidos FROM comentario_recurso, usuario WHERE usuario.usuario_id = comentario_recurso.usuario_id AND recurso_id=".$_POST['recurso_id'];
 	$resEmp = mysql_query($queEmp, $conexion) or die(mysql_error());
 	$totEmp = mysql_num_rows($resEmp);
 

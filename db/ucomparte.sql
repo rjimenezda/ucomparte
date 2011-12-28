@@ -463,6 +463,11 @@ VALUES
 INSERT INTO `comentario_recurso` 
 (`comentario_id`, `recurso_id`, `usuario_id`, `contenido`, `fecha`)
 VALUES 
+(NULL, '1', '3', 'TIENEN UN VIRUS SERÁS HIJOPUTA D:', NOW());
+
+INSERT INTO `comentario_recurso` 
+(`comentario_id`, `recurso_id`, `usuario_id`, `contenido`, `fecha`)
+VALUES 
 (NULL, '2', '1', 'El ejercicio esta bien resuelto', '2011-12-23');
 
 INSERT INTO `reporte` (`reporte_id`, `contenido`) VALUES (NULL, 'El recurso 1 esta mal');
