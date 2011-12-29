@@ -185,22 +185,7 @@ function cancel_new_group(){
   	    	<hr color="#999999" size="1px" />
             
             <!-- Se cargan los grupos a los que pertenece el usuario-->
-            <div style="float: left; width:100%">
-                <div style="float:left;">
-                    <a href="#"><img src="images/icon_group.png" width="20" height="20" /></a>
-                </div>
-                <div style="float:left; margin-left:3px; padding-top:2px;">
-                    <a href="#"><font style="color:#999; margin-top:2px">Primera Fila</font><br /></a>
-                </div>
-            </div>
-            <div style="float: left; width:100%">
-                <div style="float:left">
-                    <a href="#"><img src="images/icon_group.png" width="20" height="20" /></a>
-                </div>
-                <div style="float:left; margin-left:3px; padding-top:2px;">
-                    <a href="#"><font style="color:#999; margin-top:2px">2º I.Informática</font><br /></a>
-                </div> 
-            </div>           
+            <?php include("mygroups.php");?>        
         </div>
         
         <!-- Crear nuevo grupo -->
