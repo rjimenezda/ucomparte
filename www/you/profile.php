@@ -1,15 +1,25 @@
 <script type="text/javascript">
-$(function(){
-	//Se hace la consulta para extraer el nombre completo
-	$.post("../api/getuserinfo.php", { usuario_id : <?php echo $_GET['uid']; ?> }, function(){}, "json" ).success(function(data) { $("#nombreCompleto").text( data.nombre + " " +  data.apellidos );})
-	$.post("../api/getusergrouplist.php", { usuario_id : <?php echo $_GET['uid']; ?> }, function(){}, "json" ).success(fillusergroups);
+function filluserresources(data) {
+	$("#sharedResources").empty();
+	$.each(data, function(i, recurso){
+		$("#sharedResources").append("<img src='images/icon_group.png' width='20' height='20' style='float:left;' />").append($("<a style='color:#999;'>").attr("href", recurso.URL).text(recurso.nombre)).append("<br style='clear:both;' />");
+	})
+}
 
-	function fillusergroups(data){
+function fillusergroups(data){
 		$("#group_list_placeholder").empty();
 		$.each(data, function(i, grupo){
 			$("#group_list_placeholder").append("<img src='images/icon_group.png' width='20' height='20' style='float:left;' />").append($("<a style='color:#999;'>").attr("href", "index.php?content=group_blackboard&id="+grupo.grupo_id).text(grupo.nombre)).append("<br style='clear:both;' />");
 		})
 	}
+
+$(function(){
+	//Se hace la consulta para extraer el nombre completo
+	$.post("../api/getuserinfo.php", { usuario_id : <?php echo $_GET['uid']; ?> }, function(){}, "json" ).success(function(data) { $("#nombreCompleto").text( data.nombre + " " +  data.apellidos );})
+	$.post("../api/getusergrouplist.php", { usuario_id : <?php echo $_GET['uid']; ?> }, function(){}, "json" ).success(fillusergroups);
+
+	$.post("../api/getuserresources.php", { usuario_id : <?php echo $_SESSION['usuario_id']; ?> }, function(){}, "json" ).success(filluserresources);
+
 	
 })
 </script>
@@ -52,29 +62,8 @@ $(function(){
             </div>
         </div>
         
-        <div style="float:left; width:585px; margin-top:15px; margin-left:15px;">
-            <div style="float:left; width: 30px; ">
-            <a href="#"><img src="images/winrar.png" width="23px" height="23px" /></a>
-            </div>
-            <div style="float:left; width: 540px;padding-top:1px;">
-                <a href="#"><font style="color:#999">Apuntes de Proyectos - Proyectos (Ing. Técnica Informática), Poyectos II (Ing. Informática) - 07/12/2011</font></a>
-            </div>
-        </div>
-        <div style="float:left; width:585px; margin-top:15px; margin-left:15px;">
-            <div style="float:left; width: 30px; ">
-            <a href="#"><img src="images/pdf.png" width="23px" height="23px" /></a>
-            </div>
-           <div style="float:left; width: 540px;padding-top:1px;">
-                <a href="#"><font style="color:#999">Práctica 2 de Bioinformática - Bioinformática (Ing. Informática)  - 02/12/2011</font></a>
-            </div>
-        </div>
-        <div style="float:left; width:585px; margin-top:15px; margin-left:15px;">
-            <div style="float:left; width: 30px; ">
-            <a href="#"><img src="images/word.png" width="23px" height="23px" /></a>
-            </div>
-            <div style="float:left; width: 540px;padding-top:1px;">
-                <a href="#"><font style="color:#999">Práctica de CORBA - SOD (Ing. Informática)  - 16/10/2011</font></a>
-            </div>
+        <div id="sharedResources" style="float:left; width:585px; margin-top:15px; margin-left:15px;">
+           
         </div>
         
         <!--Archivos que se ha apuntado-->

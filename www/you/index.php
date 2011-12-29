@@ -147,7 +147,7 @@ function cancel_new_group(){
             	<div class="search">
                 	<form id="searchForm" method="post" action="index.php?content=search" target="_self">		
                     
-                    	<input id="searchBox" class="masthead-search" autocomplete="off" type="text" maxlength="2048" label="Buscar en UCOmparte" placeholder="Buscar en UCOmparte" size="50" />
+                    	<input id="searchBox" class="masthead-search" autocomplete="off" type="text" maxlength="2048" label="Buscar en UCOmparte" placeholder="Buscar en UCOmparte" size="50" name="searchQuery"/>
                         <button class="yt-uix-button" onclick="" type="submit" id="search-btn" dir="ltr" tabindex="2" role="button"><span class="yt-uix-button-content">Buscar</span></button>
                     </form>
                   
