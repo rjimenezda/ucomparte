@@ -339,7 +339,7 @@ CREATE VIEW meloapuntos_count AS
 SELECT recurso_id, COUNT(usuario_id) meloapuntos FROM usuario_recurso_apunte GROUP BY(recurso_id);
 
 CREATE VIEW detalles_recursos AS 
-SELECT recurso.recurso_id, recurso.nombre, recurso.descripcion, recurso.tamano, meloapuntos_count.meloapuntos FROM recurso INNER JOIN meloapuntos_count ON meloapuntos_count.recurso_id = recurso.recurso_id;
+SELECT recurso.recurso_id, recurso.usuario_id, recurso.URL, recurso.nombre, recurso.descripcion, recurso.tamano, meloapuntos_count.meloapuntos FROM recurso INNER JOIN meloapuntos_count ON meloapuntos_count.recurso_id = recurso.recurso_id;
 
 CREATE VIEW recursos_detalles_usuarios AS 
 SELECT detalles_recursos.recurso_id, detalles_recursos.nombre, detalles_recursos.descripcion, detalles_recursos.tamano, detalles_recursos.meloapuntos, usuario_recurso_apunte.usuario_id FROM usuario_recurso_apunte INNER JOIN detalles_recursos ON usuario_recurso_apunte.recurso_id = detalles_recursos.recurso_id;

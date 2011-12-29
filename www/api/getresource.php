@@ -12,7 +12,7 @@ if (!isset($_POST['recurso_id'])) {
 }
 
 else {
-	$queEmp = "SELECT * FROM recurso WHERE recurso_id=".$_POST['recurso_id'];
+	$queEmp = "SELECT usuario.nombre as nombre_usuario, usuario.apellidos, detalles_recursos.recurso_id, detalles_recursos.URL, detalles_recursos.usuario_id, detalles_recursos.nombre, detalles_recursos.descripcion, detalles_recursos.tamano, detalles_recursos.meloapuntos FROM usuario INNER JOIN detalles_recursos ON usuario.usuario_id = detalles_recursos.usuario_id WHERE detalles_recursos.recurso_id = ".$_POST['recurso_id'];
 	$resEmp = mysql_query($queEmp, $conexion) or die(mysql_error());
 	$totEmp = mysql_num_rows($resEmp);
 
