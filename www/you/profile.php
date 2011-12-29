@@ -1,8 +1,19 @@
 <script type="text/javascript">
+function fileicon(filetype) {
+ 	if (filetype=="jpg" || filetype=="jpeg" || filetype=="png" || filetype=="gif")
+		return "image";
+	else if (filetype=="pdf")
+		return "pdf";
+	else if (filetype=="zip" || filetype=="rar" || filetype=="gz" || filetype=="tar" || filetype=="gz" || filetype=="rar")
+		return "compress";
+	else 
+		return "default";
+}
+
 function filluserresources(data) {
 	$("#sharedResources").empty();
 	$.each(data, function(i, recurso){
-		$("#sharedResources").append("<img src='images/icon_group.png' width='20' height='20' style='float:left;' />").append($("<a style='color:#999;'>").attr("href", recurso.URL).text(recurso.nombre)).append("<br style='clear:both;' />");
+		$("#sharedResources").append("<img src='images/fileicons/"+fileicon(recurso.formato)+".png' width='20' height='20' style='float:left;' />").append($("<a style='color:#999;'>").attr("href", recurso.URL).text(recurso.nombre)).append("<br style='clear:both;' />");
 	})
 }
 
