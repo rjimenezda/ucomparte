@@ -36,75 +36,9 @@
          </div>        
     </div>
     
-    <div class="publication">
-    
-    	<!--Archivos publicados-->
-    	<div style=" float:left; margin-left:15px; width:585px; margin-top:5px;">
-        	<img src="images/tl5_bg-title-regular-pages.png" /><font style="font-size:18px;">&nbsp;&nbsp;Archivos publicados</font>
-        </div>
-        
-        <div style="float:left; width:585px; margin-top:15px; margin-left:15px;">
-            <div style="float:left; ">
-            <a href="#"><img src="images/winrar.png" width="23px" height="23px" /></a>
-            </div>
-            <div style="float:left; margin-left:8px;padding-top:1px;">
-                <a href="#"><font style="color:#999">Apuntes de Proyectos - Proyectos (Ing. Informática) - 07/12/2011</font></a>
-            </div>
-        </div>
-        <div style="float:left; width:585px; margin-top:15px; margin-left:15px;">
-            <div style="float:left; ">
-            <a href="#"><img src="images/pdf.png" width="23px" height="23px" /></a>
-            </div>
-            <div style="float:left; margin-left:8px;padding-top:1px;">
-                <a href="#"><font style="color:#999">Práctica 2 de Bioinformática - Bioinformática (Ing. Informática)  - 02/12/2011</font></a>
-            </div>
-        </div>
-        <div style="float:left; width:585px; margin-top:15px; margin-left:15px;">
-            <div style="float:left; ">
-            <a href="#"><img src="images/word.png" width="23px" height="23px" /></a>
-            </div>
-            <div style="float:left; margin-left:8px;padding-top:1px;">
-                <a href="#"><font style="color:#999">Práctica de CORBA - SOD (Ing. Informática)  - 16/10/2011</font></a>
-            </div>
-        </div>
-        
-        <!--Archivos que te has apuntado-->
-		<div style=" float:left; margin-left:15px; width:585px; margin-top:25px;">
-        	<img src="images/tl5_bg-title-regular-pages.png" /><font style="font-size:18px;">&nbsp;&nbsp;Archivos que te has apuntado&nbsp;&nbsp;&nbsp;</font><img src="images/me_lo_apunto.png" width="44px" height="23px" />
-        </div>
-        
-        <div style="float:left; width:585px; margin-top:15px; margin-left:15px;">
-            <div style="float:left; ">
-            <a href="#"><img src="images/winrar.png" width="23px" height="23px" /></a>
-            </div>
-            <div style="float:left; margin-left:8px;padding-top:1px;">
-                <a href="#"><font style="color:#999">Apuntes de Proyectos - Proyectos (Ing. Informática) - 07/12/2011</font><br /></a>
-                <a href="#"><font style="color:#900">Carlos Gargía García</font></a>
-            </div>
-        </div>
-        <div style="float:left; width:585px; margin-top:15px; margin-left:15px;">
-            <div style="float:left; ">
-            <a href="#"><img src="images/pdf.png" width="23px" height="23px" /></a>
-            </div>
-            <div style="float:left; margin-left:8px;padding-top:1px;">
-                <a href="#"><font style="color:#999">Práctica 2 de Bioinformática - Bioinformática (Ing. Informática)  - 02/12/2011</font><br /></a>
-                <a href="#"><font style="color:#900">Miguel Ángel Cid</font></a>
-            </div>
-        </div>
-        <div style="float:left; width:585px; margin-top:15px; margin-left:15px;">
-            <div style="float:left; ">
-            <a href="#"><img src="images/word.png" width="23px" height="23px" /></a>
-            </div>
-            <div style="float:left; margin-left:8px;padding-top:1px;">
-                <a href="#"><font style="color:#999">Práctica de CORBA - SOD (Ing. Informática)  - 16/10/2011</font><br /></a>
-                <a href="#"><font style="color:#900">Rafael Bernal</font></a>
-            </div>
-        </div>                       
-        
-    
-    
-    </div>
-
+	<?php 
+      	include("user_files.php");
+      ?>
 
 
 
