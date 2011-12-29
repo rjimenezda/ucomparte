@@ -12,9 +12,15 @@ function fileicon(filetype) {
 
 function filluserresources(data) {
 	$("#sharedResources").empty();
-	$.each(data, function(i, recurso){
-		$("#sharedResources").append("<img src='images/fileicons/"+fileicon(recurso.formato)+".png' width='20' height='20' style='float:left;' />").append($("<a style='color:#999;'>").attr("href", recurso.URL).text(recurso.nombre)).append("<br style='clear:both;' />");
-	})
+
+	if (data == null) {
+		$("#sharedResources").append("No has publicado recursos");
+	} else {
+		
+		$.each(data, function(i, recurso){
+			$("#sharedResources").append("<img src='images/fileicons/"+fileicon(recurso.formato)+".png' width='20' height='20' style='float:left;' />").append($("<a style='color:#999;'>").attr("href", recurso.URL).text(recurso.nombre)).append("<br style='clear:both;' />");
+		}) 
+	}
 }
 
 function fillusergroups(data){
