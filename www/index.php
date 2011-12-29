@@ -58,63 +58,72 @@ $(document).ready(function() {
 <div id="register">
     <form name="registerform" class="registerform" id="registerform" action="register.php" method="post">
     	<div style="float:left; width:100%;">
-        <p>
-            <label>Nombre<br>
-            <input type="text" name="name" id="user_name" class="input" value="" size="20" tabindex="10">
-            </label>
-        </p>    
-        <p>
-            <label>Apellidos<br>
-            <input type="text" name="surname" id="user_surname" class="input" value="" size="20" tabindex="10"></label>
-        </p>
-        <p>
-            <label>País<br>
-            <input type="text" name="degree" id="user_degree" class="input" value="" size="20" tabindex="10"></label>
-        </p>   
+            <p>
+                <label>Nombre<br>
+                <input type="text" name="name" id="user_name" class="input" value="" size="20" tabindex="10">
+                </label>
+            </p>    
+            <p>
+                <label>Apellidos<br>
+                <input type="text" name="surname" id="user_surname" class="input" value="" size="20" tabindex="10"></label>
+            </p>
+            <p>
+                <label>País<br>
+                <input type="text" name="degree" id="user_degree" class="input" value="" size="20" tabindex="10"></label>
+            </p>   
         </div>
         <div style="float:left; width:200px;">
-        <p>
-            <label>Localidad<br>
-            <input type="text" name="town" id="user_town" class="input" value="" size="20" tabindex="10" style="width:200px;"></label>
-        </p>
+            <p>
+                <label>Localidad<br>
+                <input type="text" name="town" id="user_town" class="input" value="" size="20" tabindex="10" style="width:200px;"></label>
+            </p>
         </div>
         <div style="float:left; width:200px; margin-left:15px;">
-        <p>
-            <label>Provincia<br>        
-        	<input type="text" name="province" id="user_province" class="input" value="" size="20" tabindex="10" style="width:200px;"></label>
-        </p>
+            <p>
+                <label>Provincia<br>        
+            	<input type="text" name="province" id="user_province" class="input" value="" size="20" tabindex="10" style="width:200px;"></label>
+            </p>
         </div>
         <div style="float:left; width:160px; margin-left:15px;">
-        <p>
-            <label>Fecha de nacimiento<br>        
-        	<input type="text" name="birthdate" id="user_birthdate" class="input" value="" size="20" tabindex="10" style="width:160px;"></label>
-        </p>
-                <div style="float:left; width:100%;">
+            <p>
+                <label>Fecha de nacimiento<br>        
+            	<input type="text" name="birthdate" id="user_birthdate" class="input" value="" size="20" tabindex="10" style="width:160px;"></label>
+            </p>
         </div>
-        <p>
-            <label>Sexo<br>        
-        	<select name="sex" id="sex" class="input" tabindex="10" style="width:160px;">
-        		 <option value="H">H</option>
-        		 <option value="M">M</option>
-        		 <option value="?">?</option>
-        	</select>
-        	</label>
-        </p>
         <div style="float:left; width:100%;">
+            <div style="float:left; width:160px;">
+                <p>
+                    <label>Sexo<br>        
+                	<select name="sex" id="sex" class="input" tabindex="10" style="width:160px;">
+                		 <option value="H">H</option>
+                		 <option value="M">M</option>
+                		 <option value="?">?</option>
+                	</select>
+                	</label>
+                </p>
+            </div>
+            <div style="float:left; width:415px; margin-left:15px;">            
+                <p>
+                    <label>Dirección de correo<br>
+                    <input type="text" name="log" id="user_login" class="input" value="" size="20" tabindex="10" style="width:415px;"></label>
+                </p>
+            </div>
         </div>
-        <p>
-            <label>Dirección de correo<br>
-            <input type="text" name="log" id="user_login" class="input" value="" size="15" tabindex="10"></label>
-        </p>
-        <p>
-            <label>Contraseña<br>
-            <input type="password" name="pwd" id="user_pass" class="input validate" value="" size="20" tabindex="20"></label>
-        </p>
-        <p>
-            <label>Vuelve a escribir tu contraseña<br>
-            <input type="password" name="pwdbis" id="user_pass_bis" class="input validate" value="" size="20" tabindex="20"></label>
-        </p>
-        <p class="forgetmenot"><a href="JavaScript:cancel_registration();"><input type="button" name="cancel" id="cancel" class="button-primary" value="Cancelar" tabindex="100"></a></p>
+        <div style="float:left; width:288px;"> 
+            <p>
+                <label>Contraseña<br>
+                <input type="password" name="pwd" id="user_pass" class="input validate" value="" size="20" tabindex="20" style="width:288px;"></label>
+            </p>
+        </div>
+        <div style="float:left; width:288px; margin-left: 15px;"> 
+            <p>
+                <label>Re-contraseña<br>
+                <input type="password" name="pwdbis" id="user_pass_bis" class="input validate" value="" size="20" tabindex="20" style="width:288px;"></label>
+            </p>
+        </div>
+        <div style="float:left;">
+            <p class="forgetmenot"><a href="JavaScript:cancel_registration();"><input type="button" name="cancel" id="cancel" class="button-primary" value="Cancelar" tabindex="100"></a></p>
+        </div>
         <p class="submit">
             <input type="submit" name="submit" id="submit_reg" class="button-primary" value="Acceder" tabindex="100">
         </p>
