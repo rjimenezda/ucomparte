@@ -170,11 +170,7 @@ function cancel_new_group(){
   <div class="sidebar1">
   	<div class="user_photo">
     	<div style="float:left;">
-        	<a href="#"><img src="users_images/<?php if (!file_exists("users_images/" . $_SESSION['usuario_id'] . ".jpg")) {
-        			echo "default_male.jpg"; 
-        		} else {
-        			echo $_SESSION['usuario_id'] . ".jpg";
-        		}?>" width="50px" height="50px" /></a>
+        	<a href="#"><img src="profilepic.php?uid=<?php echo $_SESSION['usuario_id'];?>" width="50px" height="50px" /></a>
         </div>
         <div id="nombrePerfil" class="user_name">
         </div>
