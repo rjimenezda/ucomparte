@@ -12,7 +12,7 @@ if (!isset($_GET['patron_busqueda'])) {
 }
 
 else {
-	$queEmp = "SELECT * FROM asignatura WHERE nombre LIKE '%".$_GET['patron_busqueda']."%'";
+	$queEmp = "SELECT asignatura.asignatura_id, asignatura.nombre, titulacion.nombre as titulacion FROM asignatura, titulacion WHERE asignatura.titulacion_id  = titulacion.titulacion_id AND asignatura.nombre LIKE '%".$_GET['patron_busqueda']."%'";
 	$resEmp = mysql_query($queEmp, $conexion) or die(mysql_error());
 	$totEmp = mysql_num_rows($resEmp);
 

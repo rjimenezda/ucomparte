@@ -1,40 +1,57 @@
 <script>
+
+selected_subjects = []
+subject_widget = '<span id="span_%ID%">%SUBNAME%<input type="button" id="sub_button_%ID%" value="X"></span><br />'
+
 $(function() {
 	function log( message ) {
 		$( "<div/>" ).text( message ).prependTo( "#log" );
 		$( "#log" ).scrollTop( 0 );
+		$("#city").val("LOLOLO");
+		
 	}
 
 	$( "#city" ).autocomplete({
 		source: function( request, response ) {
 			$.ajax({
-				//url: "http://ws.geonames.org/searchJSON",
 				url: "../api/searchsubjets.php",
-				dataType: "jsonp",
+				dataType: "json",
 				data: {
-//					featureClass: "P",
-//					style: "full",
-//					maxRows: 12,
-//					name_startsWith: request.term
-					patron_busqueda: request.term
+					patron_busqueda: request.term,
 				},
 				success: function( data ) {
-					response( $.map( data.nombre, function( item ) {
+					if (data != null) {
+					response( $.map( data, function( item ) {
 						return {
-							//label: item.name + (item.adminName1 ? ", " + item.adminName1 : "") + ", " + item.countryName,
-							//value: item.name
-							label: item.nombre,
-							label: item.nombre
+							label: item.nombre + " (" + item.titulacion + ")",
+							asignatura_nombre : item.nombre,
+							titulacion_nombre : item.titulacion,
+							asignatura_id : item.asignatura_id
 						}
 					}));
+					}
 				}
 			});
 		},
 		minLength: 2,
 		select: function( event, ui ) {
-			log( ui.item ?
-				"Selected: " + ui.item.label :
-				"Nothing selected, input was " + this.value);
+			if (ui.item) {
+				selected_subjects.push(ui.item.asignatura_id);
+				content = subject_widget.replace("%ID%", ui.item.asignatura_id)
+				content = content.replace("%SUBNAME%", ui.item.label)
+				content = content.replace("%ID%", ui.item.asignatura_id)
+				$("#selectedSub").append(content)
+				$("#sub_button_"+ui.item.asignatura_id).click(function() {
+													 for (i = 0; i < selected_subjects.length; i++) {
+														 if (selected_subjects[i] == ui.item.asignatura_id)
+															 selected_subjects.splice(i)
+														 }
+													 $("#span_"+ui.item.asignatura_id).remove()
+													 })
+				}
+/*			log( ui.item ?
+				"Selected: " + ui.item.label + "(id => " + ui.item.asignatura_id + " )":
+				"Nothing selected, input was " + this.value); */
 		},
 		open: function() {
 			$( this ).removeClass( "ui-corner-all" ).addClass( "ui-corner-top" );
@@ -94,19 +111,16 @@ $(function() {
 				<input id="city" />
 			</div>
 
-			<div class="ui-widget" style="margin-top:2em; font-family:Arial">
+			<!-- <div class="ui-widget" style="margin-top:2em; font-family:Arial">
 				Result:
 				<div id="log" style="height: 200px; width: 300px; overflow: auto;" class="ui-widget-content"></div>
+			</div> -->
+			
+			<div id="selectedSub">
+			
 			</div>
 
 			</div><!-- End demo -->
-
-
-
-			<div class="demo-description">
-			<p>The Autocomplete widgets provides suggestions while you type into the field. Here the suggestions are cities, displayed when at least two characters are entered into the field.</p>
-			<p>In this case, the datasource is the <a href="http://geonames.org">geonames.org webservice</a>. While only the city name itself ends up in the input after selecting an element, more info is displayed in the suggestions to help find the right entry. That data is also available in callbacks, as illustrated by the Result area below the input.</p>
-			</div><!-- End demo-description -->
 			</form>            
          </div>        
     </div>
