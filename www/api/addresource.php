@@ -7,7 +7,8 @@
 //"ERRORFORMATO": El formato del fichero no es correcto
 //"ERROR": Ha existido un error al intentar subir el fichero al servidor
 
-
+error_reporting(E_ALL);
+ini_set('display_errors', '1');
 
 //Comprobacion de permisos del usuario
 include("../checkauth.php");
@@ -54,22 +55,37 @@ else {
 					$rutaFichero='../you/resources/'.$nombre_fichero;
 					$URL='resources/'.$nombre_fichero;
 					$tamano=$_FILES['userfile']['size']." KB";
+					
+					$subArray = explode(",", $_POST['asignaturas']);
+											
+						if ($_POST['asignaturas'] == "") {
+							header("location: /www/you/index.php?content=notes&error=1");
+						}
+					
 					if(move_uploaded_file($_FILES['userfile']['tmp_name'], $rutaFichero)) {
 						
 						//Agregamos el nuevo recurso a la BD
 						$queEmp = "INSERT INTO recurso VALUES(NULL, '".$_POST['nombre']."', '".$_POST['descripcion']."', NOW(), ".$_SESSION['usuario_id'].", '".$URL."', '".$tamano."', '".$formato."')";
 						$resEmp = mysql_query($queEmp, $conexion) or die(mysql_error());
-
-						echo "OK"; //El archivo se ha subido correctamente
+						
+						$id_recurso = mysql_insert_id($conexion);
+						
+						foreach ($subArray as $asignatura_id) {
+							$query = "INSERT INTO recurso_asignatura (asignatura_id, recurso_id ) VALUES(".$asignatura_id.", ".$id_recurso.")";
+							$resEmp = mysql_query($query, $conexion) or die(mysql_error());
+						}
+						mysql_close($conexion);
+						header("location: /www/you/index.php?content=resource&resid=".$id_recurso);
+						exit();
 					}
 					else {
-						echo "ERROR"; //No se ha podido subir la foto
-						// print_r($_FILES);
+						mysql_close($conexion);
+						header("location: /www/you/index.php?content=notes&error=3");
 					}
 				}
 			}	
 			//En caso de que no sea un jpg, no permitir el envio
-			else echo "ERRORFORMATO";
+			else {mysql_close($conexion);header("location: /www/you/index.php?content=notes&error=2");}
 		}
 	}
 }

@@ -31,7 +31,6 @@ $(function(){
             	<font style="font-size:18px;">&nbsp;&nbsp;Resultados de la búsqueda: <? echo $_POST['searchQuery']; ?></font>
             </div>
         </div>
-        
         <div id="group_result" style="float:left; width:585px; margin-top:15px; margin-left:15px;">
         </div>
     </div>

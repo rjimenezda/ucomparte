@@ -4,13 +4,7 @@ selected_subjects = []
 subject_widget = '<span id="span_%ID%">%SUBNAME%<input type="button" id="sub_button_%ID%" value="X"></span><br />'
 
 $(function() {
-	function log( message ) {
-		$( "<div/>" ).text( message ).prependTo( "#log" );
-		$( "#log" ).scrollTop( 0 );
-		$("#city").val("LOLOLO");
-		
-	}
-
+	
 	$( "#city" ).autocomplete({
 		source: function( request, response ) {
 			$.ajax({
@@ -48,6 +42,7 @@ $(function() {
 														 }
 													 $("#span_"+ui.item.asignatura_id).remove()
 													 })
+				$("#asignaturas").val(selected_subjects);
 				}
 /*			log( ui.item ?
 				"Selected: " + ui.item.label + "(id => " + ui.item.asignatura_id + " )":
@@ -64,17 +59,26 @@ $(function() {
 </script>
 
 <div class="content">
-
+	<div id="error" style="display: <?php if(isset($_GET['error'])) { echo "block"; } else { echo "none";} ?>; background-color: red; color: white;">
+	<?php 
+		if($_GET['error'] == 1) {
+			echo "ERROR al subir el archivo: faltan asignaturas";
+		} else if($_GET['error'] == 2) {
+			echo "ERROR al subir el archivo: formato inválido";
+		} else if($_GET['error'] == 3) {
+			echo "ERROR raro, por favor vuelva a intentarlo más tarde";
+		} else {
+			echo "";
+		}
+	?>
+	</div>  
 	<div style="float:left; width:600px;margin-top:10px;border-bottom:1px solid #999; padding-bottom:10px;">
     	<div style=" float:left; margin-left:15px; width:585px;">
 			<font style="font-size:18px;">Tus archivos</font>
         </div>
         
         <div class="search" style="margin-top:10px;">
-            <!--<form id="searchForm" method="get" action="" target="_self">		
-                <input id="publication_text" type="text" maxlength="2048" label="Escribe un comentario..." placeholder="Escribe un comentario..." size="46">
-                <input type="submit" name="submit" id="submit" class="button-primary" value="Publicar" tabindex="100">
-            </form>-->
+
             <form enctype="multipart/form-data" method="post" action="../api/addresource.php">
 			  <p>
 				<!--Campo oculto para limitar el tamanyo -->
@@ -91,20 +95,7 @@ $(function() {
 				<input type="text" name="descripcion" id="descripcion">
 				</label>
 			  </p>
-			  <p>
-				<input type="hidden" name="MAX_FILE_SIZE" value="2000000">
-				<!-- tamaño en bytes 1kB=1024 1MB=1.048.576 -->
-				<input name="Enviado" type="hidden" id="Enviado" value="1">
-				<input type="submit" value="Subir" name="button">
-			  </p>
-			<meta charset="utf-8">	
-				<style>
-				.ui-autocomplete-loading { background: white url('images/ui-anim_basic_16x16.gif') right center no-repeat; }
-				#city { width: 25em; }
-				</style>
-
-
-			<div class="demo">
+			  <div class="demo">
 
 			<div class="ui-widget">
 				<label for="city">Etiquete el recurso en asignaturas: </label>
@@ -121,6 +112,20 @@ $(function() {
 			</div>
 
 			</div><!-- End demo -->
+			  <p>
+				<input type="hidden" name="MAX_FILE_SIZE" value="2000000">
+				<!-- tamaño en bytes 1kB=1024 1MB=1.048.576 -->
+				<input name="Enviado" type="hidden" id="Enviado" value="1">
+				<input name="asignaturas" type="hidden" id="asignaturas" value="">
+				<input type="submit" value="Subir" name="button">
+			  </p>
+			<meta charset="utf-8" />	
+				<style>
+				.ui-autocomplete-loading { background: white url('images/ui-anim_basic_16x16.gif') right center no-repeat; }
+				#city { width: 25em; }
+				</style>
+
+
 			</form>            
          </div>        
     </div>
