@@ -401,7 +401,7 @@ INSERT INTO `grupo_usuario` (`grupo_id`, `usuario_id`) VALUES ('1', '5');
 INSERT INTO `publicacion_grupo` 
 (`publicacion_id`, `grupo_id`, `usuario_id`, `titulo`, `contenido`, `fecha`)
 VALUES 
-(NULL, '1', '1', 'Cena de Navidad', '¿Donde y cuando quereis hacer la cena de Navidad?', '2011-12-23');
+(NULL, '1', '1', 'Cena de Navidad', 'Donde y cuando quereis hacer la cena de Navidad?', '2011-12-23');
 
 INSERT INTO `publicacion_grupo` 
 (`publicacion_id`, `grupo_id`, `usuario_id`, `titulo`, `contenido`, `fecha`)
