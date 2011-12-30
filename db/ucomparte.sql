@@ -336,7 +336,7 @@ ALTER TABLE `usuario_recurso_apunte`
 -- Vistas
 
 CREATE VIEW meloapuntos_count AS
-SELECT recurso_id, COUNT(usuario_id) meloapuntos FROM usuario_recurso_apunte GROUP BY(recurso_id);
+SELECT recurso.recurso_id, COUNT(usuario_recurso_apunte.usuario_id) as meloapuntos FROM recurso LEFT JOIN usuario_recurso_apunte ON recurso.recurso_id = usuario_recurso_apunte.recurso_id GROUP BY recurso.recurso_id;
 
 CREATE VIEW detalles_recursos AS 
 SELECT recurso.recurso_id, recurso.usuario_id, recurso.URL, recurso.nombre, recurso.descripcion, recurso.tamano, meloapuntos_count.meloapuntos FROM recurso INNER JOIN meloapuntos_count ON meloapuntos_count.recurso_id = recurso.recurso_id;

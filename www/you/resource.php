@@ -22,8 +22,10 @@ function set_melodesapunto(data) {
 }
 
 function fillresource(data) {
-	if (data == null) 
-		location.href = 'index.php';
+	if (data == null) {
+		console.log("recurso nulo!");
+		// location.href = 'index.php';
+	}
 	console.log(data);
 	$("#nombre_recurso").text(data.nombre);
 	$("#descripcion_recurso").text(data.descripcion);
@@ -34,6 +36,7 @@ function fillresource(data) {
 }
 
 function fill_comments(data) {
+	if (data != null) {
 	$("#comments").empty();
 	commentwidget = '<div style="float:left; width:600px; margin-top:15px; border-bottom:1px solid #999; padding-top: 10px;"><div style="float:left; width:23px;"><a href="#"><img src="profilepic.php?uid=%UID%" width="23px" height="23px" /></a></div><div style="float:left; margin-left:8px;padding-top:1px; width:469px;"><div style="float: left; width:469px"><a href="index.php?content=profile&uid=%UID%"><font style="color:#900; margin-left:10px;">%NAME%</font></a><font style="color:#999; margin-left:10px;">%DATE%</font> </div><div style="float:left; width:469px"><font style="color:#999; margin-left:10px;">%BODY%</font></div></div></div>';
 	$.each(data, function(i, comment) {
@@ -44,6 +47,9 @@ function fill_comments(data) {
 		content = content.replace("%BODY%", comment.contenido)
 		$("#comments").append(content)
 		});
+	} else {
+		$("#comments").append("Nadie ha comentado, sé el primero!!1");
+	}
 }
 
 function get_comments() {
@@ -82,20 +88,7 @@ $("#comentar").click(function() {
         <img id="melodesapunto" src="images/me_lo_apunto.png" width="35px" alt="Me lo desapunto!" title="Me lo desapunto!" style="display:none" />
     </div>
     <div id="comments">
-    	<div style="float:left; width:600px; margin-top:15px; border-bottom:1px solid #999; padding-top: 10px;">
-            <div style="float:left; width:23px;">
-            	<a href="#"><img src="images/photo.jpg" width="23px" height="23px" /></a>
-            </div>
-                <div style="float:left; margin-left:8px;padding-top:1px; width:469px;">
-                	<div style="float: left; width:469px">
-                		<a href="#"><font style="color:#900; margin-left:10px;">Miguel Ángel Cid</font></a>
-                    	<font style="color:#999; margin-left:10px;">08/12/2011</font>
-                    </div>
-                    <div style="float:left; width:469px">
-                    	<font style="color:#999; margin-left:10px;">Esta práctica esta fatal. No os la bajeis, mirad la mia. Vaya Carlos, que sube cosas malas, puffff.</font>
-                  	</div>
-                </div>
-       </div>
+
     </div>
       <div>  <input id="comentario_input" type="text" ></input><input id="comentar" type="button" value="comentar"></input></div>
 </div>
