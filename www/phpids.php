@@ -79,7 +79,7 @@ try {
     * a __toString method.
     */
     if (!$result->isEmpty()) {
-//        echo $result;
+		//echo $result;
 
         /*
         * The following steps are optional to log the results
@@ -110,8 +110,6 @@ try {
         
 		header("Location:nohacking.php");
 
-    } else {
-     //   echo '<a href="?test=%22><script>eval(window.name)</script>">No attack detected - click for an example attack</a>';
     }
 } catch (Exception $e) {
     /*
