@@ -155,7 +155,7 @@ $(function () {
             </div>
             <div class="header_center">
             	<div class="menu_icons">
-                	<a href="index.php?content=group_blackboard" title="Home"><img src="images/home.png" alt="Home" width="50" height="50"/></a>
+                	<a href="index.php" title="Home"><img src="images/home.png" alt="Home" width="50" height="50"/></a>
                     <a href="index.php?content=profile&uid=<?php echo $_SESSION['usuario_id']; ?>" title="Perfil"><img src="images/profile.png" alt="Perfil" width="50" height="50"/></a>
                     <a href="index.php?content=notes" title="Apuntes"><img src="images/notes.png" alt="Apuntes" width="50" height="50"/></a>
                 </div>
