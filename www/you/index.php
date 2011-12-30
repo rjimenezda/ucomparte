@@ -110,7 +110,7 @@ function cancel_new_group(){
 <div id="loadingFixed"><span>Cargando...</span></div>
 <div id="manisero">
 <object width="480" height="360"><param name="movie" value="http://www.youtube.com/v/jTwpcCUSVhI?version=3&amp;hl=es_ES"></param><param name="allowFullScreen" value="true"></param><param name="allowscriptaccess" value="always"></param><embed src="http://www.youtube.com/v/jTwpcCUSVhI?version=3&amp;hl=es_ES&autoplay=1&start=9.5&autohide=1" type="application/x-shockwave-flash" width="480" height="360" allowscriptaccess="always" allowfullscreen="true"></embed></object>
-<input id="hidemanisero" type="button" value="Cerrar Manisero" style="display:block; width: 480px"/>
+<input id="hidemanisero" type="button" value="No quiero un pedaaaso" style="display:block; width: 480px"/>
 </div>
 <div class="new_group" id="new_group" style="height:194px">
 	<div style="float:left; width:100%; height:100%">
@@ -213,16 +213,7 @@ function cancel_new_group(){
     }
   ?>
   <div class="sidebar2">
-  	<div style="margin-left:15px;">
-    	<font style="font-weight:bold;">En tus grupos</font>
-  	    <hr color="#999999" size="1px" />
-        <a href="#"><img src="images/photo.jpg" width="23px" height="23px" /></a>
-        <a href="#"><img src="images/photo.jpg" width="23px" height="23px" /></a>
-        <a href="#"><img src="images/photo.jpg" width="23px" height="23px" /></a>
-        <a href="#"><img src="images/photo.jpg" width="23px" height="23px" /></a>
-        <a href="#"><img src="images/photo.jpg" width="23px" height="23px" /></a>
-        <a href="#"><img src="images/photo.jpg" width="23px" height="23px" /></a>
-	</div>
+  	SU PUBLICIDAD AQUI :D
     <!-- end .sidebar2 --></div>
     </div>
   <div class="footer">

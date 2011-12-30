@@ -18,13 +18,33 @@ function filluserresources(data) {
 	} else {
 		
 		$.each(data, function(i, recurso){
-			$("#sharedResources").append("<img src='images/fileicons/"+fileicon(recurso.formato)+".png' width='20' height='20' style='float:left;' />").append($("<a style='color:#999;'>").attr("href", "index.php?content=resource&resid="+recurso.recurso_id).text(recurso.nombre)).append("<br style='clear:both;' />");
+			$("#sharedResources").append("<img src='images/fileicons/"+fileicon(recurso.formato)+".png' width='20' height='20' style='float:left;' />").append($("<a style='color:#999; padding-left: 3px;'>").attr("href", "index.php?content=resource&resid="+recurso.recurso_id).text(recurso.nombre)).append("<br style='clear:both;' />");
 		}) 
 	}
 }
 
+function fillmeloapuntos(data) {
+	// $("#meloapuntos").empty();
+	console.log(data);
+
+	if (data == null) {
+		$("#sharedResources").append("No has apuntado recursos");
+	} else {
+		
+		$.each(data, function(i, recurso){
+			$("#meloapuntos").append("<img src='images/fileicons/"+fileicon(recurso.formato)+".png' width='20' height='20' style='float:left;' />").append($("<a style='color:#999; padding-left: 3px;'>").attr("href", "index.php?content=resource&resid="+recurso.recurso_id).text(recurso.nombre)).append("<br style='clear:both;' />");
+		}) 
+	}
+}
+
+
 $(function() {
-$.post("../api/getuserresources.php", { usuario_id : <?php $user = (isset($_GET['uid'])) ? $_GET['uid'] : $_SESSION['usuario_id']; echo $user; ?> }, function(){}, "json" ).success(filluserresources);
+	
+userid = <?php if( isset($_GET['uid'])) { echo $_GET['uid']; } else { echo $_SESSION['usuario_id']; } ?>;
+
+$.post("../api/getuserresources.php", { usuario_id : userid }, function(){}, "json" ).success(filluserresources);
+$.post("../api/getmeloapuntos.php", { usuario_id : userid }, function(){}, "json" ).success(fillmeloapuntos);
+
 });
 </script>
 <div class="publication">
@@ -59,7 +79,8 @@ $.post("../api/getuserresources.php", { usuario_id : <?php $user = (isset($_GET[
             </div>
         </div>
         
-        <div style="float:left; width:585px; margin-top:15px; margin-left:15px;">
+        <div id="meloapuntos" style="float:left; width:585px; margin-top:15px; margin-left:15px;">
+        <!--  <div style="float:left; width:585px; margin-top:15px; margin-left:15px;">
             <div style="float:left; width: 30px; ">
             <a href="#"><img src="images/winrar.png" width="23px" height="23px" /></a>
             </div>
@@ -85,5 +106,6 @@ $.post("../api/getuserresources.php", { usuario_id : <?php $user = (isset($_GET[
                 <a href="#"><font style="color:#999">Práctica de CORBA - SOD (Ing. Informática)  - 16/10/2011</font><br /></a>
                 <a href="#"><font style="color:#900">Rafael Bernal</font></a>
             </div>
-        </div>                       
+        </div> -->
+        </div>                  
     </div>
