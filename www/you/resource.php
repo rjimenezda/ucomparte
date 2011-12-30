@@ -23,8 +23,7 @@ function set_melodesapunto(data) {
 
 function fillresource(data) {
 	if (data == null) {
-		console.log("recurso nulo!");
-		// location.href = 'index.php';
+		location.href = 'index.php';
 	}
 	console.log(data);
 	$("#nombre_recurso").text(data.nombre);

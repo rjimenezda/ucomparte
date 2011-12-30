@@ -25,7 +25,6 @@ function filluserresources(data) {
 
 function fillmeloapuntos(data) {
 	// $("#meloapuntos").empty();
-	console.log(data);
 
 	if (data == null) {
 		$("#sharedResources").append("No has apuntado recursos");
