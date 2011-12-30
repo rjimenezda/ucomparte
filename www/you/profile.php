@@ -34,8 +34,8 @@ $(function(){
 			<?php include("user_groups.php");?>
 			  
     	</div>    
-      <?php 
+    </div>
+    <?php 
       	include("user_files.php");
       ?>
-    </div>
 </div>
