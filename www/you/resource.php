@@ -5,6 +5,12 @@
 ?>
 <script>
 
+function get_profile_picture(uid) {
+	imagepath = ""
+	$.get("users_images/3.jpg").error(function() { imagepath = "users_images/default.png" }).success(function() { imagepath = "users_images/"+uid+".png" })
+	return imagepath;
+}
+
 function set_meloapunto(data) {
 	$("#melodesapunto").hide()
 	$("#meloapunto").show()
@@ -16,6 +22,8 @@ function set_melodesapunto(data) {
 }
 
 function fillresource(data) {
+	if (data == null) 
+		location.href = 'index.php';
 	console.log(data);
 	$("#nombre_recurso").text(data.nombre);
 	$("#descripcion_recurso").text(data.descripcion);
@@ -25,14 +33,29 @@ function fillresource(data) {
 	$("#download").attr("href", data.URL)
 }
 
+function fill_comments(data) {
+	$("#comments").empty();
+	commentwidget = '<div style="float:left; width:600px; margin-top:15px; border-bottom:1px solid #999; padding-top: 10px;"><div style="float:left; width:23px;"><a href="#"><img src="profilepic.php?uid=%UID%" width="23px" height="23px" /></a></div><div style="float:left; margin-left:8px;padding-top:1px; width:469px;"><div style="float: left; width:469px"><a href="index.php?content=profile&uid=%UID%"><font style="color:#900; margin-left:10px;">%NAME%</font></a><font style="color:#999; margin-left:10px;">%DATE%</font> </div><div style="float:left; width:469px"><font style="color:#999; margin-left:10px;">%BODY%</font></div></div></div>';
+	$.each(data, function(i, comment) {
+		console.log(comment)
+		content = commentwidget.replace("%UID%", comment.usuario_id)
+		content = content.replace("%NAME%", comment.nombre + " " + comment.apellidos)
+		content = content.replace("%DATE%", comment.fecha)
+		content = content.replace("%BODY%", comment.contenido)
+		$("#comments").append(content)
+		});
+}
+
 function get_comments() {
-	// Cargar comentarios...
+	$.post("../api/getresourcecomments.php", { recurso_id : <?php echo $_GET['resid']; ?> }, function(){}, "json" ).success(fill_comments)
 }
 
 // Cargar información
 $(function(){ 
 $.post("../api/apuntado.php", { recurso_id : <?php echo $_GET['resid']; ?> }, function() {}).success(set_melodesapunto).error(set_meloapunto)
 $.post("../api/getresource.php", { recurso_id : <?php echo $_GET['resid']; ?> }, function(){}, "json" ).success(fillresource)
+get_comments();
+// Cargar comentarios
 
 // Eventosss
 $("#meloapunto").click(function () {
@@ -42,10 +65,9 @@ $("#melodesapunto").click(function () {
 	$.post("../api/melodesapunto.php", { recurso_id : <?php echo $_GET['resid']; ?> }, function(){}, "json" ).success(set_meloapunto)
 })
 $("#comentar").click(function() {
-	$.post("../api/commentresource.php", {recurso_id : <?php echo $_GET['resid']; ?>, contenido : $("#comentario").val() }, function(){}, "json").success(get_comments).error(function() {alert("ERROR POSTING!")})
+	$.post("../api/commentresource.php", {recurso_id : <?php echo $_GET['resid']; ?>, contenido : $("#comentario_input").val() }, function(){}, "json").success(get_comments).error(function() {alert("ERROR POSTING!")})
 })
-});
-// Cargar comentarios 
+}); 
 </script>
 <div class="content">
 	<div style="float:left; width:600px;margin-top:10px;border-bottom:1px solid #999; padding-bottom:10px;">
@@ -58,8 +80,22 @@ $("#comentar").click(function() {
         <a id="download" href="">Descarga</a>
         <img id="meloapunto" src="images/me_lo_apunto.png" width="50px" alt="Me lo apunto!" title="Me lo apunto!" style="display:none"/>
         <img id="melodesapunto" src="images/me_lo_apunto.png" width="35px" alt="Me lo desapunto!" title="Me lo desapunto!" style="display:none" />
-        <div id="comments">
-        	</div>
-            <input id="comentario" type="text" ></input><input id="comentar" type="button" value="comentar"></input>
     </div>
+    <div id="comments">
+    	<div style="float:left; width:600px; margin-top:15px; border-bottom:1px solid #999; padding-top: 10px;">
+            <div style="float:left; width:23px;">
+            	<a href="#"><img src="images/photo.jpg" width="23px" height="23px" /></a>
+            </div>
+                <div style="float:left; margin-left:8px;padding-top:1px; width:469px;">
+                	<div style="float: left; width:469px">
+                		<a href="#"><font style="color:#900; margin-left:10px;">Miguel Ángel Cid</font></a>
+                    	<font style="color:#999; margin-left:10px;">08/12/2011</font>
+                    </div>
+                    <div style="float:left; width:469px">
+                    	<font style="color:#999; margin-left:10px;">Esta práctica esta fatal. No os la bajeis, mirad la mia. Vaya Carlos, que sube cosas malas, puffff.</font>
+                  	</div>
+                </div>
+       </div>
+    </div>
+      <div>  <input id="comentario_input" type="text" ></input><input id="comentar" type="button" value="comentar"></input></div>
 </div>

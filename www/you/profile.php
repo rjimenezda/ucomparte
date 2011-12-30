@@ -22,11 +22,7 @@ $(function(){
 <div class="content">
 	<div style="float:left; width:600px;margin-top:10px;border-bottom:1px solid #999; padding-bottom:10px;">
     	<div style=" float:left; margin-left:15px; width:200px;">
-    		<img src="users_images/<?php if (!file_exists("users_images/" . $_GET['uid'] . ".jpg")) {
-        			echo "default_male.jpg";
-        		} else {
-        			echo $_GET['uid'] . ".jpg";
-        		}?>" width="200px" height="200px" />
+    		<img src="profilepic.php?uid=<?php echo $_GET['uid'];?>"/>
         </div>
     	<div style=" float:left; margin-left:15px; width:370px;">
         	<div style="float: left; width:100%; margin-bottom:15px;">
