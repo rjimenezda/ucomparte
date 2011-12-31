@@ -1,3 +1,10 @@
+
+<?php 
+	if (!isset($_GET['gid']) or $_GET['gid'] == '') {
+		echo "<script>location.href = 'index.php'</script>";
+	}
+?>
+
 <script type="text/javascript">
 function get_comments(publicacion_id) {
 	$("#comments_" + publicacion_id).empty()
@@ -50,12 +57,40 @@ function fillcomments(data) {
 		}
 }
 
+function not_member() {
+	$("#formPostGroup").empty();
+	$("#formPostGroup").append("No perteneces a este grupo");
+	$("#formPostGroup").append('<button style="float:right; margin-right: 10px;" class="button-primary" type="button" id="joingroup" dir="ltr" tabindex="2">Unirse al grupo</button>');
+	$("#joingroup").click(function () {
+		$.post("../api/groupsign.php", { grupo_id : <?php echo $_GET['gid']; ?> }, 
+				function() {
+					location.href = "index.php?content=group_blackboard&gid=" + <?php echo $_GET['gid']; ?>
+				}, 
+			"json")
+		})
+}
+
 $(function (){
 	get_posts();
 	$("#submit").click(function() {crear_publicacion($("#publication_comment").val(), $("#publication_title").val()); get_posts();})
 	$.post("../api/getgroupdetails.php", { grupo_id: <?php echo $_GET['gid']; ?> }, function(data){
+		console.log(data)
+		if (data != null) {
 		$("#groupName").text($("#groupName").text() + " " + data.nombre)
-		}, "json" );	
+		} else {
+			location.href = "index.php";
+		}
+		}, "json" )
+	$.post("../api/getusergroups.php", { usuario_id: <?php echo $_SESSION['usuario_id']; ?> }, function(data) {
+		belongs = false;
+		$.each(data, function(i, gid) {
+			if (gid.grupo_id == <?php echo $_GET['gid']; ?>) {
+				belongs = true;
+				}
+			})
+		if (!belongs) not_member()
+		}, "json")
+		
 })
 </script>
 <div class="content">
@@ -63,7 +98,7 @@ $(function (){
     	<div style=" float:left; margin-left:15px; width:585px;">
     		<font id="groupName" style="font-size:18px;">Publica en la pizarra de</font>
     	</div>
-        <div class="search" style="margin-top:10px; width:585px">	
+        <div id="formPostGroup" class="search" style="margin-top:10px; width:585px">	
             	<input id="publication_title" class="masthead-search" autocomplete="off" type="text" maxlength="2048" label="Escribe un titular..." placeholder="Escribe un titular..." size="84" /><br /><br />
                 <input id="publication_comment" class="masthead-search" autocomplete="off" type="text" maxlength="2048" label="Escribe un comentario..." placeholder="Escribe un comentario..." size="84" /><br /><br />
                 
