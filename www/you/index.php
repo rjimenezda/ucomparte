@@ -17,6 +17,17 @@ ini_set('display_errors', '1');
 <script type="text/javascript" src="../js/jquery-ui-1.8.16.min.js"></script>
 <script language="javascript" type="text/javascript">
 
+function fileicon(filetype) {
+ 	if (filetype=="jpg" || filetype=="jpeg" || filetype=="png" || filetype=="gif")
+		return "image";
+	else if (filetype=="pdf")
+		return "pdf";
+	else if (filetype=="zip" || filetype=="rar" || filetype=="gz" || filetype=="tar" || filetype=="gz" || filetype=="rar")
+		return "compress";
+	else 
+		return "default";
+}
+
 function checkCombo() {
 	if (current.length == combo.length) {
 		return current.toString() == combo.toString();
@@ -155,7 +166,7 @@ $(function () {
             </div>
             <div class="header_center">
             	<div class="menu_icons">
-                	<a href="index.php?content=group_blackboard" title="Home"><img src="images/home.png" alt="Home" width="50" height="50"/></a>
+                	<a href="index.php" title="Home"><img src="images/home.png" alt="Home" width="50" height="50"/></a>
                     <a href="index.php?content=profile&uid=<?php echo $_SESSION['usuario_id']; ?>" title="Perfil"><img src="images/profile.png" alt="Perfil" width="50" height="50"/></a>
                     <a href="index.php?content=notes" title="Apuntes"><img src="images/notes.png" alt="Apuntes" width="50" height="50"/></a>
                 </div>

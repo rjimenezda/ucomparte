@@ -1,15 +1,4 @@
 <script type="text/javascript">
-function fileicon(filetype) {
- 	if (filetype=="jpg" || filetype=="jpeg" || filetype=="png" || filetype=="gif")
-		return "image";
-	else if (filetype=="pdf")
-		return "pdf";
-	else if (filetype=="zip" || filetype=="rar" || filetype=="gz" || filetype=="tar" || filetype=="gz" || filetype=="rar")
-		return "compress";
-	else 
-		return "default";
-}
-
 function filluserresources(data) {
 	$("#sharedResources").empty();
 

@@ -5,7 +5,7 @@ function fillmygroups(data){
 			}
 		else {
 		$.each(data, function(i, grupo){
-			$("#my_group_list_placeholder").append("<img src='images/icon_group.png' width='20' height='20' style='float:left;' />").append($("<a style='color:#999;'>").attr("href", "index.php?content=group_blackboard&id="+grupo.grupo_id).text(grupo.nombre)).append("<br style='clear:both;' />");
+			$("#my_group_list_placeholder").append("<img src='images/icon_group.png' width='20' height='20' style='float:left;' />").append($("<a style='color:#999;'>").attr("href", "index.php?content=group_blackboard&gid="+grupo.grupo_id).text(grupo.nombre)).append("<br style='clear:both;' />");
 		})
 		}
 	}
