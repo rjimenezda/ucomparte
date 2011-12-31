@@ -17,6 +17,17 @@ ini_set('display_errors', '1');
 <script type="text/javascript" src="../js/jquery-ui-1.8.16.min.js"></script>
 <script language="javascript" type="text/javascript">
 
+function fileicon(filetype) {
+ 	if (filetype=="jpg" || filetype=="jpeg" || filetype=="png" || filetype=="gif")
+		return "image";
+	else if (filetype=="pdf")
+		return "pdf";
+	else if (filetype=="zip" || filetype=="rar" || filetype=="gz" || filetype=="tar" || filetype=="gz" || filetype=="rar")
+		return "compress";
+	else 
+		return "default";
+}
+
 function checkCombo() {
 	if (current.length == combo.length) {
 		return current.toString() == combo.toString();
