@@ -53,19 +53,15 @@ function fillcomments(data) {
 $(function (){
 	get_posts();
 	$("#submit").click(function() {crear_publicacion($("#publication_comment").val(), $("#publication_title").val()); get_posts();})
-	
-	
-	$( "#comments" ).accordion({
-		collapsible: true,
-		active: false,
-		animated: false
-	});
+	$.post("../api/getgroupdetails.php", { grupo_id: <?php echo $_GET['gid']; ?> }, function(data){
+		$("#groupName").text($("#groupName").text() + " " + data.nombre)
+		}, "json" );	
 })
 </script>
 <div class="content">
   	<div class="blackboard">
     	<div style=" float:left; margin-left:15px; width:585px;">
-    		<font style="font-size:18px;">Publica en la pizarra de Primera Fila</font>
+    		<font id="groupName" style="font-size:18px;">Publica en la pizarra de</font>
     	</div>
         <div class="search" style="margin-top:10px; width:585px">	
             	<input id="publication_title" class="masthead-search" autocomplete="off" type="text" maxlength="2048" label="Escribe un titular..." placeholder="Escribe un titular..." size="84" /><br /><br />
