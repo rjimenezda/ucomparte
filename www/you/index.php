@@ -132,7 +132,7 @@ $(function () {
 <body>
 <div id="loadingFixed"><span>Cargando...</span></div>
 <div id="manisero">
-<object width="480" height="360"><param name="movie" value="http://www.youtube.com/v/jTwpcCUSVhI?version=3&amp;hl=es_ES"></param><param name="allowFullScreen" value="true"></param><param name="allowscriptaccess" value="always"></param><embed src="http://www.youtube.com/v/jTwpcCUSVhI?version=3&amp;hl=es_ES&autoplay=1&start=9.5&autohide=1" type="application/x-shockwave-flash" width="480" height="360" allowscriptaccess="always" allowfullscreen="true"></embed></object>
+<object width="480" height="360" style="z-index:3000"><param name="movie" value="http://www.youtube.com/v/jTwpcCUSVhI?version=3&amp;hl=es_ES"></param><param name="allowFullScreen" value="true"></param><param name="allowscriptaccess" value="always"></param><embed src="http://www.youtube.com/v/jTwpcCUSVhI?version=3&amp;hl=es_ES&autoplay=1&start=9.5&autohide=1" type="application/x-shockwave-flash" width="480" height="360" allowscriptaccess="always" allowfullscreen="true"></embed></object>
 <input id="hidemanisero" type="button" value="No quiero un pedaaaso" style="display:block; width: 480px"/>
 </div>
 <div class="new_group" id="new_group" style="height:194px">
