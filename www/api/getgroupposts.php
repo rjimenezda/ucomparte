@@ -11,7 +11,7 @@ if (!isset($_POST['grupo_id'])) {
 	die();
 }
 else {
-	$queEmp = "SELECT DISTINCT B.*, CONCAT(A.nombre, ' ' ,A.apellidos) as nombre FROM (publicacion_grupo B, usuario A) INNER JOIN publicacion_grupo ON A.usuario_id = B.usuario_id WHERE B.grupo_id = (SELECT grupo_id FROM grupo_usuario WHERE grupo_id =".$_POST['grupo_id']." AND usuario_id=".$_SESSION['usuario_id'].")";
+	$queEmp = "SELECT DISTINCT B.*, CONCAT(A.nombre, ' ' ,A.apellidos) as nombre FROM (publicacion_grupo B, usuario A) INNER JOIN publicacion_grupo ON A.usuario_id = B.usuario_id WHERE B.grupo_id = (SELECT grupo_id FROM grupo_usuario WHERE grupo_id =".$_POST['grupo_id']." AND usuario_id=".$_SESSION['usuario_id'].") ORDER BY B.fecha DESC";
 	$resEmp = mysql_query($queEmp, $conexion) or die(mysql_error());
 	$totEmp = mysql_num_rows($resEmp);
 

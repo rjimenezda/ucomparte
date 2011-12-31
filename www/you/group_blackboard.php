@@ -4,6 +4,10 @@ function get_comments(publicacion_id) {
 	$.post("../api/getgrouppost.php", { publicacion_id: publicacion_id }, function(){}, "json" ).success(fillcomments);	
 }
 
+function get_posts() {
+	$.post("../api/getgroupposts.php", { grupo_id: <?php echo $_GET['gid']; ?> }, function(){}, "json" ).success(fillgroupposts);
+}
+
 function comentar(pubid, content) {
 	offset = window.pageYOffset
 	$.post("../api/commentgrouppost.php", { publicacion_id: pubid, contenido : content }, function(){}, "json" );
@@ -11,8 +15,13 @@ function comentar(pubid, content) {
 	window.scrollTo(0, offset);
 }
 
+function crear_publicacion(content, title) {
+	$.post("../api/addgrouppost.php", { grupo_id: <?php echo $_GET['gid']; ?> , titulo: title, contenido : content }, function(){}, "json" );	
+}
+
 function fillgroupposts(data) {
 	if (data != null) {
+		$("#publications").empty()
 		postwidget = '<div class="publication"><div style="float:left; margin-left:20px;"><a href="#"><img src="profilepic.php?uid=%USERID%" width="50px" height="50px" /></a></div><div class="details_publication"><div style="float:left; width:500px;"><a href="index.php?content=profile&uid=%USERID%"><font style="color:#900">%USERNAME%</font></a><font style="color:#999; margin-left:10px;">%DATE%</font></div><div style="float:left; width:500px; margin-top:5px;" id="contenido">%TITLE%</div><div style="float:left; width:500px; margin-top:5px;" id="contenido">%CONTENT%</div><div style="float:left; width:500px; margin-top:15px;"><div id="comments_%PUBID%"></div><div style="float:left; margin-left:8px;padding-top:1px;"><input type="text" id="comentar_input_%PUBID%" /><a id="comentar_%PUBID%" href="#"><font style="color:#999; margin-left:10px;">Comentar</font></a></div></div></div></div>'
 		$.each(data, function(i, post) {
 			content = postwidget.replace(/%USERID%/g, post.usuario_id)
@@ -42,8 +51,10 @@ function fillcomments(data) {
 }
 
 $(function (){
-	$.post("../api/getgroupposts.php", { grupo_id: <?php echo $_GET['gid']; ?> }, function(){}, "json" ).success(fillgroupposts);
-
+	get_posts();
+	$("#submit").click(function() {crear_publicacion($("#publication_comment").val(), $("#publication_title").val()); get_posts();})
+	
+	
 	$( "#comments" ).accordion({
 		collapsible: true,
 		active: false,
@@ -56,13 +67,11 @@ $(function (){
     	<div style=" float:left; margin-left:15px; width:585px;">
     		<font style="font-size:18px;">Publica en la pizarra de Primera Fila</font>
     	</div>
-        <div class="search" style="margin-top:10px; width:585px">
-            <form id="publicationForm" method="post" action="" target="_self">		
+        <div class="search" style="margin-top:10px; width:585px">	
             	<input id="publication_title" class="masthead-search" autocomplete="off" type="text" maxlength="2048" label="Escribe un titular..." placeholder="Escribe un titular..." size="84" /><br /><br />
                 <input id="publication_comment" class="masthead-search" autocomplete="off" type="text" maxlength="2048" label="Escribe un comentario..." placeholder="Escribe un comentario..." size="84" /><br /><br />
                 
-                <button class="button-primary" onclick="" type="submit" id="submit" dir="ltr" tabindex="2" role="button">Publicar</button>
-            </form>            
+                <button class="button-primary" type="button" id="submit" dir="ltr" tabindex="2">Publicar</button>
          </div>
     </div>
     
