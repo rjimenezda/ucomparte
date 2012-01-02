@@ -345,6 +345,7 @@ ul.nav a:hover, ul.nav a:active, ul.nav a:focus { /* esto cambia el color de fon
 	padding: 15px;
 	width: 480px;
 	display: none;
+	z-index: 1000;
 }
 #loadingFixed {
 	color: white;
