@@ -370,7 +370,7 @@ VALUES
 INSERT INTO `usuario`
 (`usuario_id`, `email`, `password`, `es_administrador`, `nombre`, `apellidos`, `pais`, `localidad`, `provincia`, `sexo`, `fecha_Nacimiento`, `fecha_alta`) 
 VALUES 
-(NULL, 'i52excaj@uco.es', 'password', '1', 'Jose David', 'Exposito Canete', 'España', 'Cordoba', 'Cordoba', 'H', '1986-05-11', '2011-12-23');
+(NULL, 'i42excaj@uco.es', 'password', '1', 'Jose David', 'Exposito Canete', 'España', 'Cordoba', 'Cordoba', 'H', '1986-05-11', '2011-12-23');
 
 INSERT INTO `titulacion` (`titulacion_id`, `nombre`) VALUES (NULL, 'Ingenieria Informatica');
 
