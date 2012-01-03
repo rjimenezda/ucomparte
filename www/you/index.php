@@ -237,7 +237,7 @@ $(function () {
     }
   ?>
   <div class="sidebar2">
-  	SU PUBLICIDAD AQUI :D
+  	<a href="http://www.proxyconsulting.es" target="_blank"><img src="banners/logo_proxy.png"  width="178px"/></a>
     <!-- end .sidebar2 --></div>
     </div>
   <div class="footer">

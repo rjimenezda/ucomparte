@@ -80,45 +80,41 @@ $(function() {
         <div class="search" style="margin-top:10px;">
 
             <form enctype="multipart/form-data" method="post" action="../api/addresource.php">
-			  <p>
+			  
 				<!--Campo oculto para limitar el tamanyo -->
-			  Elige imagen: 
-				<input name="userfile" type="file">
-			  </p>
-			  <p>Nombre: 
-				<label>
-				<input type="text" name="nombre" id="nombre">
-				</label>
-			  </p>
-			  <p>Descripcion: 
-				<label>
-				<input type="text" name="descripcion" id="descripcion">
-				</label>
-			  </p>
-			  <div class="demo">
+			 
+				<input name="userfile" type="file" class="masthead-search" />
+			    <br /><br />
+			  
+				<input type="text" name="nombre" id="nombre" class="masthead-search" label="Nombre" placeholder="Nombre"/>
+				<br /><br />
+			  
+				<input type="text" name="descripcion" id="descripcion" class="masthead-search" label="Descripción" placeholder="Descripción">
+				
+			  <div class="demo" style="margin-top: 15px;">
 
-			<div class="ui-widget">
-				<label for="city">Etiquete el recurso en asignaturas: </label>
-				<input id="city" />
-			</div>
+			    <div class="ui-widget">
+				    <label for="city"><font style="font-size:14px;">Etiquete el recurso en asignaturas:</font> </label>
+				    <input id="city" class="masthead-search"/>
+			    </div>
 
 			<!-- <div class="ui-widget" style="margin-top:2em; font-family:Arial">
 				Result:
 				<div id="log" style="height: 200px; width: 300px; overflow: auto;" class="ui-widget-content"></div>
 			</div> -->
 			
-			<div id="selectedSub">
+			    <div id="selectedSub">
 			
-			</div>
+			    </div>
 
 			</div><!-- End demo -->
-			  <p>
+			<div style="float:left; margin-top:10px;">
 				<input type="hidden" name="MAX_FILE_SIZE" value="2000000">
 				<!-- tamaño en bytes 1kB=1024 1MB=1.048.576 -->
 				<input name="Enviado" type="hidden" id="Enviado" value="1">
 				<input name="asignaturas" type="hidden" id="asignaturas" value="">
-				<input type="submit" value="Subir" name="button">
-			  </p>
+				<input type="submit" value="Subir" name="button" class="button-primary">
+			</div>  
 			<meta charset="utf-8" />	
 				<style>
 				.ui-autocomplete-loading { background: white url('images/ui-anim_basic_16x16.gif') right center no-repeat; }
