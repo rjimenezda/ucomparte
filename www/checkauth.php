@@ -3,7 +3,7 @@ session_start();
 
 if(!isset($_SESSION['usuario_id'])) {
     session_destroy();
-    header("location: /www/index.php?error='eeeeeeeeee'");
+    header("location: /www/index.php");
     exit();
 }
 

@@ -20,7 +20,7 @@
 set_include_path(
     get_include_path()
     . PATH_SEPARATOR
-    . 'phpids/lib/'
+    . '/home/ciyi/ucomparte/www/phpids/lib/'
 );
 
 if (!session_id()) {
@@ -108,7 +108,7 @@ try {
         */
         $compositeLog->execute($result);
         
-		header("Location:nohacking.php");
+		header("Location:http://ucomparte.es/nohacking.php");
 
     }
 } catch (Exception $e) {
@@ -121,3 +121,4 @@ try {
         $e->getMessage()
     );
 }
+?>
