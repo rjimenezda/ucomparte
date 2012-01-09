@@ -237,7 +237,15 @@ $(function () {
     }
   ?>
   <div class="sidebar2">
-  	<a href="http://www.proxyconsulting.es" target="_blank"><img src="banners/logo_proxy.png"  width="178px"/></a>
+    <div style="float:left; margin-left:8px;">
+  	<a href="http://www.proxyconsulting.es" target="_blank"><img src="banners/logo_proxy.png"  width="170px"/></a>
+    </div>
+    <div style="float:left; margin-left:8px; margin-top: 14px;">
+    <a href="http://www.redandyellow.es" target="_blank"><img src="banners/logo_redyellow.png" width="170px"/></a>
+    </div>
+    <div style="float:left; margin-left:8px; margin-top: 14px;">
+    <a href="http://www.cortadoresexposito.com" target="_blank"><img src="banners/logo_cortadoresexposito.png" width="170px"/></a>
+    </div>
     <!-- end .sidebar2 --></div>
     </div>
   <div class="footer">

@@ -35,8 +35,12 @@ $(function(){
 	</div> 
 	<div style="float:left; width:600px;margin-top:10px;border-bottom:1px solid #999; padding-bottom:10px;">
     	<div style=" float:left; margin-left:15px; width:200px;">
-    		<img src="profilepic.php?uid=<?php echo $_GET['uid'];?>" width="200px" />    		
-    		<?php if($_GET['uid'] == $_SESSION['usuario_id']) echo '<form enctype="multipart/form-data" method="post" action="../api/addprofilepic.php">Sube otra foto <input type="file" name="userfile" style="float:left;"/><input type="submit" value="Enviar"/><input type="hidden" name="MAX_FILE_SIZE" value="2000000"><input name="Enviado" type="hidden" id="Enviado" value="1"></form>'; ?>
+            <div style="float:left;width:100%;">
+    		    <img src="profilepic.php?uid=<?php echo $_GET['uid'];?>" width="200px" />
+            </div>   		
+            <div style="float:left;width:100%;margin-top:10px;">
+    		<?php if($_GET['uid'] == $_SESSION['usuario_id']) echo '<form enctype="multipart/form-data" method="post" action="../api/addprofilepic.php">Cambia tu foto<br/> <input class="masthead-search" type="file" name="userfile" style="float:left;"/><br/><br/><input class="button-primary" type="submit" value="Enviar"/><input type="hidden" name="MAX_FILE_SIZE" value="2000000"><input name="Enviado" type="hidden" id="Enviado" value="1"></form>'; ?>
+            </div>
     	</div>
     	<div style=" float:left; margin-left:15px; width:370px;">
         	<div style="float: left; width:100%; margin-bottom:15px;">
