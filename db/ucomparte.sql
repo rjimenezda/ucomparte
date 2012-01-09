@@ -466,7 +466,7 @@ VALUES
 INSERT INTO `comentario_recurso` 
 (`comentario_id`, `recurso_id`, `usuario_id`, `contenido`, `fecha`)
 VALUES 
-(NULL, '1', '3', 'TIENEN UN VIRUS SERÁS HIJOPUTA D:', NOW());
+(NULL, '1', '3', 'TIENEN UN VIRUS SERÁS ... D:', NOW());
 
 INSERT INTO `comentario_recurso` 
 (`comentario_id`, `recurso_id`, `usuario_id`, `contenido`, `fecha`)
