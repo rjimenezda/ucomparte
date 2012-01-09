@@ -81,6 +81,12 @@ $(function() {
 	});
 	$(".btn_meapago").click(function(){do_meapago();});
 
+    $("#cancelMeApago").click(function(){
+        clearTimeout(handlerMeApago);
+        $("#prgs_meapago").progressbar("value", 0);
+        $("#meapago").hide();
+    });
+
 	$('#loadingFixed')
     .hide()  // hide it initially
     .ajaxStart(function() {
@@ -89,6 +95,8 @@ $(function() {
     .ajaxStop(function() {
         $(this).hide();
     });
+
+
 	
 
 	$.post("../api/getuserinfo.php", { usuario_id : <?php echo $_SESSION['usuario_id']; ?> }, function(data) { $("#nombrePerfil").text( data.nombre )}, "json" );	
@@ -96,15 +104,16 @@ $(function() {
 
 });
 
+var handlerMeApago = null;
 
 function do_meapago(){
 	var currentValue = $("#prgs_meapago").progressbar("value");
 	if(currentValue==0)
 		$("#meapago").show();
-	if(currentValue<1000){
-		currentValue+=10;
+	if(currentValue<100){
+		currentValue+=5;
 		$("#prgs_meapago").progressbar("value", currentValue);
-		setTimeout('do_meapago()',200);
+		handlerMeApago = setTimeout('do_meapago()',80);
 	}
 }
 
@@ -257,10 +266,10 @@ $(function () {
   <!-- end .container --></div>
   
   <div id="meapago">
-	<p style="text-align: center;">Haz lo que tengas que hacer, que me apago</p> 
+	<p style="text-align: center;">¡¡Haz lo que tengas que hacer, que me apago!!</p> 
 	<div id="prgs_meapago"></div>
     <div style="float:left; margin-left: 50px; margin-top:20px;">
-        <a href="JavaScript:cancel_logout();"><input type="button" name="cancel" id="cancel" class="button-primary" value="Cancelar" tabindex="100"></a>
+        <input type="button" id="cancelMeApago" class="button-primary" value="Cancelar" tabindex="100">
     </div>
   </div>
   
