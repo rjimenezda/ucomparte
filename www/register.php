@@ -28,6 +28,7 @@ if ($_POST['name'] === '' or
 			
 			mysql_query($query);
 			mysql_close($conexion);
+			header("location: index.php");
 		} else {
 			die("Illegal email");	
 		}
