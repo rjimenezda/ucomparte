@@ -95,9 +95,11 @@ a:hover, a:active, a:focus { /* este grupo de selectores proporcionará a un usu
 }
 .content {
 	width: 600px;
+    min-height:500px;
 	float: left;
 	border-left:1px solid #999;
 	border-right:1px solid #999;
+    border-bottom:1px solid #999;
 }
 .sidebar2 {
 	float: left;
@@ -135,7 +137,6 @@ a:hover, a:active, a:focus { /* este grupo de selectores proporcionará a un usu
 	float:left; 
 	width: 600px; 
 	margin-top:10px;
-	border-bottom:1px solid #999; 
 	padding-bottom:10px;	
 }
 
@@ -313,13 +314,27 @@ ul.nav a:hover, ul.nav a:active, ul.nav a:focus { /* esto cambia el color de fon
 #meapago {
 	width:400px;
 	height:200px;
-	background-color: gray;
+    font-weight:normal;
+	background-color:#fff;
+	filter:alpha(opacity=90);
+	opacity:0.9;;
 	position: absolute;
 	top: 50%;
 	left: 50%;
+    padding: 20px 0;
 	margin-left: -200px;
 	margin-top: -100px;
 	display:none;
+	-moz-border-radius:11px;
+	-khtml-border-radius:11px;
+	-webkit-border-radius:11px;
+	border-radius:11px;
+	border:1px solid #e5e5e5;
+	-moz-box-shadow:rgba(200,200,200,1) 0 4px 18px;
+	-webkit-box-shadow:rgba(200,200,200,1) 0 4px 18px;
+	-khtml-box-shadow:rgba(200,200,200,1) 0 4px 18px;
+	box-shadow:rgba(200,200,200,1) 0 4px 18px;	
+}
 }
 #meapagado {
 	width:100%;

@@ -96,14 +96,15 @@ $(function() {
 
 });
 
+
 function do_meapago(){
 	var currentValue = $("#prgs_meapago").progressbar("value");
 	if(currentValue==0)
 		$("#meapago").show();
-	if(currentValue<100){
+	if(currentValue<1000){
 		currentValue+=10;
 		$("#prgs_meapago").progressbar("value", currentValue);
-		setTimeout('do_meapago()',50);
+		setTimeout('do_meapago()',200);
 	}
 }
 
@@ -256,8 +257,11 @@ $(function () {
   <!-- end .container --></div>
   
   <div id="meapago">
-	<p>Haz lo que tengas que hacer, que me apago</p> 
+	<p style="text-align: center;">Haz lo que tengas que hacer, que me apago</p> 
 	<div id="prgs_meapago"></div>
+    <div style="float:left; margin-left: 50px; margin-top:20px;">
+        <a href="JavaScript:cancel_logout();"><input type="button" name="cancel" id="cancel" class="button-primary" value="Cancelar" tabindex="100"></a>
+    </div>
   </div>
   
   <div id="meapagado"></div>
