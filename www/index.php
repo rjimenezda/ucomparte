@@ -125,7 +125,7 @@ $(document).ready(function() {
             <p class="forgetmenot"><a href="JavaScript:cancel_registration();"><input type="button" name="cancel" id="cancel" class="button-primary" value="Cancelar" tabindex="100"></a></p>
         </div>
         <p class="submit">
-            <input type="submit" name="submit" id="submit_reg" class="button-primary" value="Acceder" tabindex="100">
+            <input type="submit" name="submit" id="submit_reg" class="button-primary" value="Enviar" tabindex="100">
         </p>
         </div>
     </form>
