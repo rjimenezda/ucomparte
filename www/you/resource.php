@@ -75,7 +75,7 @@ $("#comentar").click(function() {
 }); 
 </script>
 <div class="content">
-	<div style="float:left; width:600px;margin-top:10px;border-bottom:1px solid #999; padding-bottom:10px;">
+	<div style="float:left; width:600px;margin-top:10px;padding-bottom:10px;">
         <div style="float:left; width:256px; margin-left: 5px; margin-top: 5px;">
     	    <img src="images/fileicons/default.png" />
         </div>

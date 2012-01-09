@@ -68,32 +68,6 @@ $.post("../api/getmeloapuntos.php", { usuario_id : userid }, function(){}, "json
         </div>
         
         <div id="meloapuntos" style="float:left; width:585px; margin-top:15px; margin-left:15px;">
-        <!--  <div style="float:left; width:585px; margin-top:15px; margin-left:15px;">
-            <div style="float:left; width: 30px; ">
-            <a href="#"><img src="images/winrar.png" width="23px" height="23px" /></a>
-            </div>
-            <div style="float:left; width: 540px;padding-top:1px;">
-                <a href="#"><font style="color:#999">Apuntes de Proyectos - Proyectos (Ing. Informática) - 07/12/2011</font><br /></a>
-                <a href="#"><font style="color:#900">Carlos Gargía García</font></a>
-            </div>
-        </div>
-        <div style="float:left; width:585px; margin-top:15px; margin-left:15px;">
-            <div style="float:left; width: 30px; ">
-            <a href="#"><img src="images/pdf.png" width="23px" height="23px" /></a>
-            </div>
-            <div style="float:left; width: 540px;padding-top:1px;">
-                <a href="#"><font style="color:#999">Práctica 2 de Bioinformática - Bioinformática (Ing. Informática)  - 02/12/2011</font><br /></a>
-                <a href="#"><font style="color:#900">Miguel Ángel Cid</font></a>
-            </div>
-        </div>
-        <div style="float:left; width:585px; margin-top:15px; margin-left:15px;">
-            <div style="float:left; width: 30px; ">
-            <a href="#"><img src="images/word.png" width="23px" height="23px" /></a>
-            </div>
-            <div style="float:left; width: 540px;padding-top:1px;">
-                <a href="#"><font style="color:#999">Práctica de CORBA - SOD (Ing. Informática)  - 16/10/2011</font><br /></a>
-                <a href="#"><font style="color:#900">Rafael Bernal</font></a>
-            </div>
-        </div> -->
+
         </div>                  
     </div>

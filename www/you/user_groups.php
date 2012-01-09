@@ -6,7 +6,7 @@ function fillusergroups(data){
 			}
 		else {
 		$.each(data, function(i, grupo){
-			$("#group_list_placeholder").append("<img src='images/icon_group.png' width='20' height='20' style='float:left;' />").append($("<a style='color:#999;'>").attr("href", "index.php?content=group_blackboard&gid="+grupo.grupo_id).text(grupo.nombre)).append("<br style='clear:both;' />");
+			$("#group_list_placeholder").append("<img src='images/icon_group.png' width='20' height='20' style='float:left;' />").append($("<a style='color:#999; padding-left:3px;'>").attr("href", "index.php?content=group_blackboard&gid="+grupo.grupo_id).text(grupo.nombre)).append("<br style='clear:both;' />");
 		})
 		}
 	}
