@@ -26,6 +26,7 @@ function fillresource(data) {
 		location.href = 'index.php';
 	}
 	console.log(data);
+	$("#filetype").attr("src", "images/fileicons/"+fileicon(data.URL.slice(-3))+".png")
 	$("#nombre_recurso").text(data.nombre);
 	$("#descripcion_recurso").text(data.descripcion);
 	$("#tamano").text(data.tamano);
@@ -77,7 +78,7 @@ $("#comentar").click(function() {
 <div class="content">
 	<div style="float:left; width:600px;margin-top:10px;border-bottom:1px solid #999; padding-bottom:10px;">
         <div style="float:left; width:256px; margin-left: 5px; margin-top: 5px;">
-    	    <img src="images/fileicons/default.png" />
+    	    <img width="200px" id="filetype" src="images/fileicons/default.png" />
         </div>
     	<div id="nombre_recurso" style="float:left;font-weight:bold;margin-bottom:5px;margin-top: 5px; width:335px">Apuntes de proyectos</div>
     	<div id="descripcion_recurso" style="float:left;width:335px">Descripcion...</div>
