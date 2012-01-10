@@ -16,7 +16,7 @@ function fillmeloapuntos(data) {
 	// $("#meloapuntos").empty();
 
 	if (data == null) {
-		$("#sharedResources").append("No has apuntado recursos");
+		$("#meloapuntos").append("No has apuntado recursos");
 	} else {
 		
 		$.each(data, function(i, recurso){
