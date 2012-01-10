@@ -146,9 +146,9 @@ $(document).ready(function() {
 				<input type="password" name="pwd" id="user_pass" class="input" value="" size="20" tabindex="20"></label>
 			</p>
 			
-			<? if(isset($_GET['err']) && $_GET['err']=='1'){ ?>
+			<?php if(isset($_GET['err']) && $_GET['err']=='1'){ ?>
 			<p style="color:red;">Usuario o contraseña no v&aacute;lidos</p><br />			
-			<? } ?>
+			<?php } ?>
 			
 			<p class="forgetmenot"><label><input name="rememberme" type="checkbox" id="rememberme" value="forever" tabindex="90"> Recuérdame</label></p>
 			<p class="submit">
