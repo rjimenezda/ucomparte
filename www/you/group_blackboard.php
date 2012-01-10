@@ -59,6 +59,7 @@ function fillcomments(data) {
 
 function not_member() {
 	$("#formPostGroup").empty();
+	$("#groupName").empty();
 	$("#formPostGroup").append("No perteneces a este grupo");
 	$("#formPostGroup").append('<button style="float:right; margin-right: 10px;" class="button-primary" type="button" id="joingroup" dir="ltr" tabindex="2">Unirse al grupo</button>');
 	$("#joingroup").click(function () {
@@ -83,11 +84,13 @@ $(function (){
 		}, "json" )
 	$.post("../api/getusergroups.php", { usuario_id: <?php echo $_SESSION['usuario_id']; ?> }, function(data) {
 		belongs = false;
+		if (data != null) {
 		$.each(data, function(i, gid) {
 			if (gid.grupo_id == <?php echo $_GET['gid']; ?>) {
 				belongs = true;
 				}
 			})
+		}
 		if (!belongs) not_member()
 		}, "json")
 		
