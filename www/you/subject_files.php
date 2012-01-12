@@ -14,7 +14,7 @@ function filluserresources(data) {
 
 $(function() {
 	
-subid = <?php if( isset($_GET['uid'])) { echo $_GET['uid']; } else { echo $_SESSION['usuario_id']; } ?>;
+subid = <?php echo $_GET['subid'] ?>;
 $.post("../api/getsubjectresources.php", { asignatura_id : subid }, function(){}, "json" ).success(filluserresources);
 
 });
