@@ -7,9 +7,6 @@
 //"ERRORFORMATO": El formato del fichero no es correcto
 //"ERROR": Ha existido un error al intentar subir el fichero al servidor
 
-error_reporting(E_ALL);
-ini_set('display_errors', '1');
-
 //Comprobacion de permisos del usuario
 include("../checkauth.php");
 
@@ -23,9 +20,10 @@ if (!isset($_POST['Enviado'])) {
 
 else {
 
+	//TIPO PJPEG para IE
 	if (isset($_POST['Enviado'])) {
 		if ($_POST['Enviado']==1) {
-/*			if ($_FILES['userfile']['type']=="image/jpeg" or //jpg, jpeg, jpe
+			if ($_FILES['userfile']['type']=="image/jpeg" or //jpg, jpeg, jpe
 				($_FILES['userfile']['type']=="image/pjpeg") or
 				($_FILES['userfile']['type']=="image/gif") or //gif
 				($_FILES['userfile']['type']=="application/pdf") or //pdf
@@ -43,8 +41,7 @@ else {
 				($_FILES['userfile']['type']=="application/vnd.ms-excel") or //xlb, xlc, xll, xlm, xls, xlw
 				($_FILES['userfile']['type']=="application/x-excel") or //xla, xlb, xlc, xld, xlk, xll, xlm, xls, xlt, xlv, xlw
 				($_FILES['userfile']['type']=="application/richtext") //rt, rtf, rtx
-			) { 
-*/
+			) {
 				if (is_uploaded_file($_FILES['userfile']['tmp_name'])) {
 				
 					//Extrae el formato
@@ -54,7 +51,7 @@ else {
 					$nombre_fichero=time().'__'.$_FILES['userfile']['name'];
 					$rutaFichero='../you/resources/'.$nombre_fichero;
 					$URL='resources/'.$nombre_fichero;
-					$tamano=$_FILES['userfile']['size']." KB";
+					$tamano=round($_FILES['userfile']['size']/1000, 1)." KB";
 					
 					$subArray = explode(",", $_POST['asignaturas']);
 											
@@ -81,11 +78,12 @@ else {
 					else {
 						mysql_close($conexion);
 						header("location: /www/you/index.php?content=notes&error=3");
+						exit();
 					}
 				}
-			//}	
+			}	
 			//En caso de que no sea un jpg, no permitir el envio
-			else {mysql_close($conexion);header("location: /www/you/index.php?content=notes&error=2");}
+			else {mysql_close($conexion);header("location: /www/you/index.php?content=notes&error=2");exit();}
 		}
 	}
 }
